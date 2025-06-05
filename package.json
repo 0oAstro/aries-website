@@ -1,0 +1,45 @@
+{
+  "name": "adorable-aries",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.3.0",
+    "@hookform/resolvers": "^5.0.1",
+    "@radix-ui/react-accordion": "^1.2.11",
+    "@radix-ui/react-avatar": "^1.1.10",
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-navigation-menu": "^1.2.13",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-tabs": "^1.1.12",
+    "@tabler/icons-react": "^3.34.0",
+    "@tailwindcss/vite": "^4.1.8",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
+    "astro": "^5.8.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "embla-carousel-react": "^8.6.0",
+    "lucide-react": "^0.513.0",
+    "motion": "^12.16.0",
+    "react": "^19.1.0",
+    "react-day-picker": "8.10.1",
+    "react-dom": "^19.1.0",
+    "react-hook-form": "^7.57.0",
+    "react-icons": "^5.5.0",
+    "tailwind-merge": "^3.3.0",
+    "tailwindcss": "^4.1.8",
+    "zod": "^3.25.51"
+  },
+  "devDependencies": {
+    "tw-animate-css": "^1.3.4"
+  }
+}

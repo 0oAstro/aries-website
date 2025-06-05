@@ -1,0 +1,11 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { Navigation } from '@/components/Navigation';
+import { TeamSection } from '@/components/TeamSection';
+import '@/styles/global.css';
+---
+
+<Layout title="Team - Aries AI Society">
+  <Navigation client:load />
+  <TeamSection client:load />
+</Layout> 

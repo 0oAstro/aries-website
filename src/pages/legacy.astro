@@ -1,0 +1,11 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { Navigation } from '@/components/Navigation';
+import { LegacySection } from '@/components/LegacySection';
+import '@/styles/global.css';
+---
+
+<Layout title="Our Legacy - Aries AI Society">
+  <Navigation client:load />
+  <LegacySection client:load />
+</Layout> 
