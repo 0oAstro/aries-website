@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { IconSearch, IconBrandGithub, IconExternalLink, IconCode } from "@tabler/icons-react";
+import { ShootingStars } from "@/components/ui/shooting-stars";
+import { StarsBackground } from "@/components/ui/stars-background";
 
 const projects = [
   {
@@ -101,62 +103,81 @@ const projects = [
 
 const categories = ["All", "Computer Vision", "Natural Language Processing", "Robotics", "Healthcare", "IoT", "Finance"];
 
-const ProjectCard = ({ project }: { project: typeof projects[0] }) => (
-  <div className="bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-xl border border-neutral-700 p-6 hover:border-neutral-600 transition-all duration-300 hover:scale-105">
-    <div className="aspect-video mb-4 rounded-lg overflow-hidden bg-neutral-800">
-      <img 
-        src={project.image} 
-        alt={project.title}
-        className="w-full h-full object-cover"
-      />
-    </div>
-    
-    <div className="flex justify-between items-start mb-3">
-      <Badge variant="secondary" className="bg-blue-600">
-        {project.category}
-      </Badge>
-      {project.featured && (
-        <Badge className="bg-yellow-600">Featured</Badge>
+const ProjectCardWithHover = ({ project, index }: { project: typeof projects[0], index: number }) => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  return (
+    <div 
+      className="relative group block p-2 h-full w-full"
+      onMouseEnter={() => setHoveredIndex(index)}
+      onMouseLeave={() => setHoveredIndex(null)}
+    >
+      {hoveredIndex === index && (
+        <div className="absolute inset-0 h-full w-full bg-gradient-to-br from-purple-600/20 to-pink-600/20 block rounded-3xl animate-pulse" />
       )}
-    </div>
-    
-    <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
-    <p className="text-neutral-300 mb-4 line-clamp-3">{project.description}</p>
-    
-    <div className="mb-4">
-      <p className="text-sm text-neutral-400 mb-2">Tech Stack:</p>
-      <div className="flex flex-wrap gap-2">
-        {project.techStack.map((tech, idx) => (
-          <Badge key={idx} variant="outline" className="text-xs">
-            {tech}
+      
+      <div className="bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-xl border border-neutral-700 p-6 hover:border-purple-500 transition-all duration-300 hover:scale-105 relative z-20">
+        <div className="aspect-video mb-4 rounded-lg overflow-hidden bg-neutral-800">
+          <img 
+            src={project.image} 
+            alt={project.title}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        <div className="flex justify-between items-start mb-3">
+          <Badge variant="secondary" style={{ backgroundColor: 'rgb(106,58,196)' }} className="text-white border-none">
+            {project.category}
           </Badge>
-        ))}
+          {project.featured && (
+            <Badge style={{ backgroundColor: 'rgb(233,123,177)' }} className="text-white border-none">Featured</Badge>
+          )}
+        </div>
+        
+        <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
+        <p className="text-neutral-300 mb-4 line-clamp-3">{project.description}</p>
+        
+        <div className="mb-4">
+          <p className="text-sm text-neutral-400 mb-2">Tech Stack:</p>
+          <div className="flex flex-wrap gap-2">
+            {project.techStack.map((tech, idx) => (
+              <Badge 
+                key={idx} 
+                variant="outline" 
+                className="text-xs border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white transition-colors"
+              >
+                {tech}
+              </Badge>
+            ))}
+          </div>
+        </div>
+        
+        <div className="mb-4">
+          <p className="text-sm text-neutral-400 mb-1">Team:</p>
+          <p className="text-sm text-neutral-300">{project.team.join(", ")}</p>
+        </div>
+        
+        <div className="flex space-x-3">
+          <a
+            href={project.github}
+            className="flex-1 flex items-center justify-center px-3 py-2 bg-neutral-700 hover:bg-neutral-600 text-white rounded-md transition-colors text-sm"
+          >
+            <IconBrandGithub className="w-4 h-4 mr-2" />
+            Code
+          </a>
+          <a
+            href={project.link}
+            style={{ backgroundColor: 'rgb(106,58,196)' }}
+            className="flex-1 flex items-center justify-center px-3 py-2 hover:opacity-80 text-white rounded-md transition-all text-sm"
+          >
+            <IconExternalLink className="w-4 h-4 mr-2" />
+            Demo
+          </a>
+        </div>
       </div>
     </div>
-    
-    <div className="mb-4">
-      <p className="text-sm text-neutral-400 mb-1">Team:</p>
-      <p className="text-sm text-neutral-300">{project.team.join(", ")}</p>
-    </div>
-    
-    <div className="flex space-x-3">
-      <a
-        href={project.github}
-        className="flex-1 flex items-center justify-center px-3 py-2 bg-neutral-700 hover:bg-neutral-600 text-white rounded-md transition-colors text-sm"
-      >
-        <IconBrandGithub className="w-4 h-4 mr-2" />
-        Code
-      </a>
-      <a
-        href={project.link}
-        className="flex-1 flex items-center justify-center px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors text-sm"
-      >
-        <IconExternalLink className="w-4 h-4 mr-2" />
-        Demo
-      </a>
-    </div>
-  </div>
-);
+  );
+};
 
 export const ProjectsSection = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -176,7 +197,30 @@ export const ProjectsSection = () => {
 
   return (
     <div className="relative w-full bg-black min-h-screen pt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Stars Background */}
+      <div className="fixed inset-0 w-full h-full z-0">
+        <StarsBackground 
+          starDensity={0.0005}
+          allStarsTwinkle={true}
+          twinkleProbability={0.8}
+          minTwinkleSpeed={0.5}
+          maxTwinkleSpeed={1.5}
+          className="absolute inset-0"
+        />
+        <ShootingStars 
+          minSpeed={15}
+          maxSpeed={35}
+          minDelay={800}
+          maxDelay={3000}
+          starColor="#9E00FF"
+          trailColor="#2EB9DF"
+          starWidth={12}
+          starHeight={2}
+          className="absolute inset-0"
+        />
+      </div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center mb-16">
@@ -193,38 +237,48 @@ export const ProjectsSection = () => {
           <h2 className="text-3xl font-bold text-white text-center mb-12">Featured Projects</h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
-            <WobbleCard
-              containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[500px] lg:min-h-[300px]"
-            >
-              <div className="max-w-xs">
-                <h2 className="text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                  {featuredProjects[0]?.title}
-                </h2>
-                <p className="mt-4 text-left text-base/6 text-neutral-200">
-                  {featuredProjects[0]?.description}
-                </p>
-              </div>
-            </WobbleCard>
+            <div style={{ backgroundColor: 'rgb(106,58,196)' }} className="rounded-xl">
+              <WobbleCard
+                containerClassName="col-span-1 lg:col-span-2 h-full bg-transparent min-h-[500px] lg:min-h-[300px]"
+              >
+                <div className="max-w-xs">
+                  <h2 className="text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
+                    {featuredProjects[0]?.title}
+                  </h2>
+                  <p className="mt-4 text-left text-base/6 text-neutral-200">
+                    {featuredProjects[0]?.description}
+                  </p>
+                </div>
+              </WobbleCard>
+            </div>
 
-            <WobbleCard containerClassName="col-span-1 min-h-[300px] bg-blue-900">
-              <h2 className="max-w-80 text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                {featuredProjects[1]?.title}
-              </h2>
-              <p className="mt-4 max-w-[26rem] text-left text-base/6 text-neutral-200">
-                {featuredProjects[1]?.description}
-              </p>
-            </WobbleCard>
-
-            <WobbleCard containerClassName="col-span-1 lg:col-span-3 bg-green-900 min-h-[500px] lg:min-h-[600px] xl:min-h-[300px]">
-              <div className="max-w-sm">
-                <h2 className="max-w-sm md:max-w-lg text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                  {featuredProjects[2]?.title}
+            <div style={{ backgroundColor: 'rgb(106,58,196)' }} className="rounded-xl">
+              <WobbleCard 
+                containerClassName="col-span-1 min-h-[300px] bg-transparent"
+              >
+                <h2 className="max-w-80 text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
+                  {featuredProjects[1]?.title}
                 </h2>
                 <p className="mt-4 max-w-[26rem] text-left text-base/6 text-neutral-200">
-                  {featuredProjects[2]?.description}
+                  {featuredProjects[1]?.description}
                 </p>
-              </div>
-            </WobbleCard>
+              </WobbleCard>
+            </div>
+
+            <div style={{ backgroundColor: 'rgb(106,58,196)' }} className="rounded-xl">
+              <WobbleCard 
+                containerClassName="col-span-1 lg:col-span-3 min-h-[500px] lg:min-h-[600px] xl:min-h-[300px] bg-transparent"
+              >
+                <div className="max-w-sm">
+                  <h2 className="max-w-sm md:max-w-lg text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
+                    {featuredProjects[2]?.title}
+                  </h2>
+                  <p className="mt-4 max-w-[26rem] text-left text-base/6 text-neutral-200">
+                    {featuredProjects[2]?.description}
+                  </p>
+                </div>
+              </WobbleCard>
+            </div>
           </div>
         </div>
 
@@ -254,9 +308,10 @@ export const ProjectsSection = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                   selectedCategory === category
-                    ? 'bg-blue-600 text-white'
+                    ? 'text-white border-none'
                     : 'bg-neutral-800 text-neutral-300 hover:bg-neutral-700'
                 }`}
+                style={selectedCategory === category ? { backgroundColor: 'rgb(106,58,196)' } : {}}
               >
                 {category}
               </button>
@@ -279,7 +334,7 @@ export const ProjectsSection = () => {
           {filteredProjects.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProjects.map((project, idx) => (
-                <ProjectCard key={idx} project={project} />
+                <ProjectCardWithHover key={idx} project={project} index={idx} />
               ))}
             </div>
           ) : (
@@ -324,13 +379,15 @@ export const ProjectsSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="/contact"
-              className="px-8 py-4 rounded-md bg-gradient-to-b from-blue-500 to-blue-700 text-white text-lg font-bold relative cursor-pointer hover:-translate-y-1 transition duration-300 inline-block text-center shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]"
+              style={{ background: 'linear-gradient(to bottom, rgb(106,58,196), rgb(85,46,157))' }}
+              className="px-8 py-4 rounded-md text-white text-lg font-bold relative cursor-pointer hover:-translate-y-1 transition duration-300 inline-block text-center shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]"
             >
               Get Involved
             </a>
             <a
               href="/events"
-              className="px-8 py-4 rounded-md border border-neutral-600 text-white text-lg font-medium relative cursor-pointer hover:-translate-y-1 transition duration-300 inline-block text-center hover:border-neutral-400"
+              className="px-8 py-4 rounded-md border text-white text-lg font-medium relative cursor-pointer hover:-translate-y-1 transition duration-300 inline-block text-center hover:border-pink-400"
+              style={{ borderColor: 'rgb(233,123,177)' }}
             >
               Join Workshop
             </a>

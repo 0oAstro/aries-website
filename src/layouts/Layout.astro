@@ -1,4 +1,6 @@
 ---
+import Footer from '../components/Footer.astro';
+
 export interface Props {
   title: string;
   description?: string;
@@ -21,6 +23,7 @@ const { title, description = "Aries - The Artificial Intelligence Society of IIT
     <main class="relative">
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
 
