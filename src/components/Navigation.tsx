@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/resizable-navbar";
 
 const navigationItems = [
-  { name: "Home", link: "/" },
   { name: "Events", link: "/events" },
   { name: "Projects", link: "/projects" },
   { name: "Our Legacy", link: "/legacy" },
@@ -38,17 +37,6 @@ const AriesLogo = () => {
   );
 };
 
-const JoinButton = () => {
-  return (
-    <a
-      href="/contact"
-      className="px-6 py-2 rounded-md bg-gradient-to-b from-blue-500 to-blue-700 text-white text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]"
-    >
-      Join Aries
-    </a>
-  );
-};
-
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -57,7 +45,6 @@ export const Navigation = () => {
       <NavBody>
         <AriesLogo />
         <NavItems items={navigationItems} />
-        <JoinButton />
       </NavBody>
 
       <MobileNav>
@@ -81,7 +68,6 @@ export const Navigation = () => {
               </a>
             ))}
             <div className="pt-4 border-t border-neutral-200 dark:border-neutral-800">
-              <JoinButton />
             </div>
           </div>
         </MobileNavMenu>

@@ -11,6 +11,9 @@ import {
   IconRocket,
   IconBulb
 } from "@tabler/icons-react";
+import { LampContainer } from '@/components/ui/lamp'
+import {buttonVariants} from '@/components/ui/button'
+
 
 const features = [
   {
@@ -72,34 +75,38 @@ const features = [
 export const FeaturesSection = () => {
   return (
     <div className="relative w-full bg-black py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center mb-4">
-            <IconBulb className="h-8 w-8 text-blue-500 mr-3" />
-            <h2 className="text-3xl md:text-5xl font-bold text-white">
-              What We Offer
-            </h2>
+      {/* Text container */}
+      <div className="flex flex-col items-center justify-center px-10 gap-y-2">
+        <p className="text-white text-center text-3xl font-medium">Artificial Intelligence, Machine Learning and everything in between</p>
+        <p className="text-white text-center text-lg">ARIES is IIT Delhi's student-led community that brings together curious minds to learn, build, and explore intelligent systems.</p>
+        <p className="mt-10 text-white text-center text-3xl font-medium">Not just another club</p>
+        <p className="text-white text-center text-lg">ARIES a space where ideas turn into research, research turns into products, and people grow into innovators.</p>
+      </div>
+      
+      <LampContainer>
+
+        {/* TODO REPLACE THIS WITH GRID BECAUSE THEY DON'T LINE UP WELL */}
+        <p className="text-white text-center text-4xl font-medium">What we do</p>
+        <div className="my-10 flex flex-row space-apart gap-10 justify-center items-center">
+          <p className="text-white text-center text-2xl font-medium">Powerful Projects</p>
+          <div className="flex flex-col justify-center align-center gap-4">
+            <span>Code that does more than compile - our projects turn curiosity into prototypes, and ideas into impact</span>
+            <div>
+              <a href="/projects" className={buttonVariants({ variant: 'default' })}>View Projects</a>
+            </div>
           </div>
-          <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
-            Aries provides a comprehensive platform for AI learning, research, and innovation at IIT Delhi.
-          </p>
         </div>
 
-        {/* Bento Grid */}
-        <BentoGrid className="max-w-6xl mx-auto">
-          {features.map((item, i) => (
-            <BentoGridItem
-              key={i}
-              title={item.title}
-              description={item.description}
-              header={item.header}
-              className={item.className}
-              icon={item.icon}
-            />
-          ))}
-        </BentoGrid>
-      </div>
+        <div className="my-10 flex flex-row space-apart gap-10 justify-center items-center">
+          <p className="text-white text-center text-2xl font-medium">Exciting Events</p>
+          <div className="flex flex-col justify-center align-center gap-4">
+            <span>From caffeine-fueled hackathons to talks that actually stick , our events are designed to challenge, connect and leave a mark.</span>
+            <div>
+              <a href="/projects" className={buttonVariants({ variant: 'default' })}>View Projects</a>
+            </div>
+          </div>
+        </div>
+      </LampContainer>
     </div>
   );
 }; 
