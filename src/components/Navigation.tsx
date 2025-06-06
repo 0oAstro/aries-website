@@ -17,7 +17,6 @@ const navigationItems = [
   { name: "Our Legacy", link: "/legacy" },
   { name: "Team", link: "/team" },
   { name: "Gallery", link: "/gallery" },
-  { name: "Contact Us", link: "#contact" },
 ];
 
 const AriesLogo = () => {
