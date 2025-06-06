@@ -12,48 +12,48 @@ import { StarsBackground } from "@/components/ui/stars-background";
 
 const projects = [
   {
-    title: "Neural Style Transfer",
-    description: "An advanced deep learning project that applies artistic styles to images using convolutional neural networks and transfer learning techniques. Built with PyTorch and optimized for real-time processing.",
+    title: "ARIES Bootcamp",
+    description: "A 6 week long training camp where students are posed with new learnings and challenges every single day .",
     link: "#",
     github: "#",
     category: "Computer Vision",
     techStack: ["Python", "PyTorch", "OpenCV", "NumPy"],
     featured: true,
     image: "https://placehold.co/600x400.png",
-    team: ["Arjun Sharma", "Priya Gupta"]
+    team: []
   },
   {
-    title: "Sentiment Analysis Bot",
-    description: "Real-time sentiment analysis using NLP techniques to understand emotions in social media data and customer feedback. Includes web dashboard and API endpoints.",
+    title: "Life Sized TARS Robot",
+    description: "A Replica of the TARS robot from Interstellar, produced by ARIES team in a showcase visit to Japanese Students.",
     link: "#",
     github: "#",
     category: "Natural Language Processing",
     techStack: ["Python", "NLTK", "Flask", "MongoDB"],
     featured: true,
     image: "https://placehold.co/600x400.png",
-    team: ["Rohit Kumar", "Sneha Patel"]
+    team: []
   },
   {
-    title: "Autonomous Campus Navigation",
-    description: "AI-powered navigation system for IIT Delhi campus using computer vision, path planning algorithms, and real-time obstacle detection for autonomous vehicles.",
+    title: "CSoT",
+    description: "Numerours models ranging from mortality prediction model to Gen-AI Chatbot Counsellor , developed by students in a 6 week long bootcamp.",
     link: "#",
     github: "#",
     category: "Robotics",
     techStack: ["Python", "ROS", "TensorFlow", "OpenCV"],
     featured: true,
     image: "https://placehold.co/600x400.png",
-    team: ["Vikram Singh", "Neha Joshi"]
+    team: []
   },
   {
-    title: "Medical Diagnosis AI",
-    description: "Computer vision model for early disease detection from medical imaging data using deep convolutional networks and attention mechanisms.",
+    title: "ML project for military",
+    description: "empowering our guarding angels with latest technology , the youth of this country contributes to its developement , here at ARIES.",
     link: "#",
     github: "#",
     category: "Healthcare",
     techStack: ["Python", "Keras", "Medical Imaging", "CNN"],
     featured: false,
     image: "https://placehold.co/600x400.png",
-    team: ["Amit Agarwal", "Pooja Sharma"]
+    team: []
   },
   {
     title: "Smart Energy Management",
@@ -64,7 +64,7 @@ const projects = [
     techStack: ["Python", "Scikit-learn", "IoT", "Raspberry Pi"],
     featured: false,
     image: "https://placehold.co/600x400.png",
-    team: ["Rahul Mishra", "Kavya Reddy"]
+    team: []
   },
   {
     title: "AI Chat Assistant",
@@ -75,7 +75,7 @@ const projects = [
     techStack: ["Python", "Transformers", "FastAPI", "React"],
     featured: false,
     image: "https://placehold.co/400x300.png",
-    team: ["Siddharth Gupta", "Ritu Saxena"]
+    team: []
   },
   {
     title: "Stock Price Predictor",
@@ -86,18 +86,18 @@ const projects = [
     techStack: ["Python", "LSTM", "Pandas", "Yahoo Finance API"],
     featured: false,
     image: "https://placehold.co/400x300.png",
-    team: ["Harshit Kumar", "Anjali Mehta"]
+    team: []
   },
   {
-    title: "Face Recognition System",
-    description: "Real-time face recognition and attendance system using deep learning and computer vision for automated attendance tracking.",
+    title: "Tresswap",
+    description: "GAN based approach to transform hairstyles.",
     link: "#",
     github: "#",
     category: "Computer Vision",
     techStack: ["Python", "OpenCV", "FaceNet", "SQLite"],
     featured: false,
     image: "https://placehold.co/400x300.png",
-    team: ["Nikhil Jain", "Shweta Singh"]
+    team: []
   }
 ];
 
