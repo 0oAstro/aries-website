@@ -17,7 +17,7 @@ const navigationItems = [
   { name: "Our Legacy", link: "/legacy" },
   { name: "Team", link: "/team" },
   { name: "Gallery", link: "/gallery" },
-  { name: "Contact Us", link: "/contact" },
+  // { name: "Contact Us", link: "/contact" },
 ];
 
 const AriesLogo = () => {
@@ -27,13 +27,31 @@ const AriesLogo = () => {
       className="relative z-20 mr-4 flex items-center space-x-3 px-2 py-1 text-sm font-normal text-white"
     >
       {/* Temporary AI-themed icon until logo is provided */}
-      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 via-purple-600 to-cyan-500 flex items-center justify-center">
+      <div className="w-8 h-8 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-600 to-cyan-500 flex items-center justify-center">
         <span className="text-white font-bold text-sm">A</span>
       </div>
       <span className="font-bold text-xl text-white">
         Aries
       </span>
     </a>
+  );
+};
+
+function scrollToBottom() {
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: 'smooth' // Optional: for smooth scrolling
+  })
+}
+
+const ContactButton = () => {
+  return (
+    <button
+      onClick={scrollToBottom}
+      className="px-6 py-2 rounded-md bg-gradient-to-b from-indigo-500 to-indigo-700 text-white text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]"
+    >
+      Contact Us
+    </button>
   );
 };
 
@@ -45,6 +63,7 @@ export const Navigation = () => {
       <NavBody>
         <AriesLogo />
         <NavItems items={navigationItems} />
+        <ContactButton />
       </NavBody>
 
       <MobileNav>
@@ -68,6 +87,7 @@ export const Navigation = () => {
               </a>
             ))}
             <div className="pt-4 border-t border-neutral-200 dark:border-neutral-800">
+              <ContactButton />
             </div>
           </div>
         </MobileNavMenu>
