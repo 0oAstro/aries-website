@@ -1,11 +1,1010 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import { Navigation } from '@/components/Navigation';
-import { TeamSection } from '@/components/TeamSection';
+// Import Astro's Image component
+import { Image } from 'astro:assets';
 import '@/styles/global.css';
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource-variable/advent-pro';
+
+// Import all images (you'll need to place these in your src/assets/ directory)
+import familyPhoto from '../images/people/family_photo.png';
+import magicStick from '../images/assets/magic_stick.png';
+import purpleLight from '../images/assets/purple_light.svg';
+import facultyHead from '../images/people/faculty_head.png';
+import aasthaPhoto from '../images/people/Aastha.jpeg';
+import anmolPhoto from '../images/people/Anmol.jpg';
+import rajPhoto from '../images/people/Raj.jpg';
+import anshPhoto from '../images/people/Ansh_Singh.jpg';
+import garvishPhoto from '../images/people/Garviah_Khandelwal.jpg';
+import contactPhoto from '../images/assets/contact_photo.png';
+import jagritiPhoto from '../images/people/Jagriti_singh.jpg';
+import sanidhyaPhoto from '../images/people/Sanidhya.jpg';
+import tahaPhoto from '../images/people/Taha_Munavver.jpg';
+import tamannaPhoto from '../images/people/Tamanna_Thakral.jpg';
+
+// Social media icons
+import ariesLogo from '../images/assets/aries_logo.png';
+import instagramIcon from '../images/assets/instagram.png';
+import linkedinIcon from '../images/assets/linkedin.png';
+import gmailIcon from '../images/assets/gmail.png';
+import instagramFooter from '../images/assets/instagram_footer.png';
+import facebookIcon from '../images/assets/facebook.png';
+import twitterIcon from '../images/assets/twitter.png';
+import githubIcon from '../images/assets/github.png';
+import redditIcon from '../images/assets/reddit.png';
+import whatsappIcon from '../images/assets/whatsapp.png';
+import { Navigation } from '@/components/Navigation';
+import Layout from '@/layouts/Layout.astro';
+
+// Page title and meta information
+const title = "Team - ARIES IITD";
+const description = "Meet the ARIES CREW - Faculty Head, Coordinators, and Executives driving AI and ML innovation at IIT Delhi";
 ---
 
-<Layout title="Team - Aries AI Society">
+<Layout title="Team - Aries - The AI Society of IIT Delhi">
   <Navigation client:load />
-  <TeamSection client:load />
-</Layout> 
+
+  <!-- ======================= MAIN TEAM CONTENT ======================= -->
+  <main>
+    <section class="hero-section">
+      <Image 
+        src={familyPhoto} 
+        alt="ARIES Team Group Photo" 
+        width={1200} 
+        height={600}
+        class="hero-image"
+      />
+    </section>
+
+    <section class="crew-section">
+      <h1 class="fade-in main-title">
+        Meet The ARIES CREW!
+      </h1>
+      
+      <div class="team-category faculty-head">
+        <h2 class="category-title fade-in">
+          Faculty Head
+        </h2>
+        <div class="purple_light">
+          <Image src={magicStick} alt="magic stick" class="magic_stick" width={100} height={200} />
+          <Image src={purpleLight} alt="purple light" class="purple_glow" width={300} height={150} />
+        </div>
+
+        <div class="faculty-container fade-in">
+          <div class="faculty-left">
+            <div class="faculty-photo">
+              <Image 
+                src={facultyHead} 
+                alt="Prof. Tanmoy Chakraborty" 
+                width={300} 
+                height={400}
+                class="faculty-image"
+              />
+            </div>
+            <div class="faculty-identity">
+              <h3>Prof. Tanmoy Chakraborty</h3>
+              <p class="faculty-role">
+                Faculty member, Yardi School of AI, IIT Delhi<br />
+                Associate Professor, Dept. of Electrical Engineering, IIT Delhi<br />
+                Faculty Head, ARIES IITD
+              </p>
+            </div>
+          </div>
+
+          <div class="faculty-right">
+            <p>He serves as the Faculty Advisor of ARIES. He is an Associate Professor at IIT Delhi where he leads research at the intersection of Artificial Intelligence, Natural Language Processing, and Network Science.</p>
+            <p>He completed his Ph.D. from IIT Kharagpur and has published extensively in top-tier AI and data science venues. His work focuses on real-world challenges such as misinformation detection, social behavior analysis, and large-scale language understanding. He also serves as an Associate Editor for IEEE Transactions on Knowledge and Data Engineering (TKDE).</p>
+            <p>As the guiding academic force behind ARIES, Prof. Chakraborty brings deep research expertise, mentorship, and strategic vision — helping shape the club's growth as a hub for impactful AI and ML exploration.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-category">
+        <h2 class="category-title fade-in">
+          Overall Coordinators
+        </h2>
+        <div class="purple_light">
+          <Image src={magicStick} alt="magic stick" class="magic_stick" width={100} height={200} />
+          <Image src={purpleLight} alt="purple light" class="purple_glow" width={300} height={150} />
+        </div>
+        <div class="member-cards">
+          <div class="member-card fade-in">
+            <div class="member-photo">
+              <Image src={aasthaPhoto} alt="Aastha" width={200} height={200} class="member-image" />
+            </div>
+            <h4>Aastha</h4>
+            <div class="social-links">
+              <a href="#" title="Instagram">
+                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
+              </a>
+              <a href="#" title="LinkedIn">
+                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
+              </a>
+              <a href="#" title="Email">
+                <Image src={gmailIcon} alt="Email" width={24} height={24} />
+              </a>
+            </div>
+          </div>
+          <div class="member-card fade-in">
+            <div class="member-photo">
+              <Image 
+                src={anmolPhoto} 
+                alt="Anmol Goel" 
+                width={200} 
+                height={200}
+                class="member-image"
+                style="object-fit: cover; object-position: center center;"
+              />
+            </div>
+            <h4>Anmol</h4>
+            <div class="social-links">
+              <a href="#" title="Instagram">
+                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
+              </a>
+              <a href="#" title="LinkedIn">
+                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
+              </a>
+              <a href="#" title="Email">
+                <Image src={gmailIcon} alt="Email" width={24} height={24} />
+              </a>
+            </div>
+          </div>
+          <div class="member-card fade-in">
+            <div class="member-photo">
+              <Image src={rajPhoto} alt="Raj" width={200} height={200} class="member-image" />
+            </div>
+            <h4>Raj</h4>
+            <div class="social-links">
+              <a href="#" title="Instagram">
+                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
+              </a>
+              <a href="#" title="LinkedIn">
+                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
+              </a>
+              <a href="#" title="Email">
+                <Image src={gmailIcon} alt="Email" width={24} height={24} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-category">
+        <h2 class="category-title fade-in">Coordinators</h2>
+        <div class="purple_light">
+          <Image src={magicStick} alt="magic stick" class="magic_stick" width={100} height={200} />
+          <Image src={purpleLight} alt="purple light" class="purple_glow" width={300} height={150} />
+        </div>
+        <div class="member-cards">
+          <div class="member-card fade-in">
+            <div class="member-photo">
+              <Image src={anshPhoto} alt="Ansh Singh" width={200} height={200} class="member-image" />
+            </div>
+            <h4>Ansh</h4>
+            <div class="social-links">
+              <a href="#" title="Instagram">
+                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
+              </a>
+              <a href="#" title="LinkedIn">
+                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
+              </a>
+              <a href="#" title="Email">
+                <Image src={gmailIcon} alt="Email" width={24} height={24} />
+              </a>
+            </div>
+          </div>
+          <div class="member-card fade-in">
+            <div class="member-photo">
+              <Image src={garvishPhoto} alt="Garvish Khandelwal" width={200} height={200} class="member-image" />
+            </div>
+            <h4>Garvish</h4>
+            <div class="social-links">
+              <a href="#" title="Instagram">
+                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
+              </a>
+              <a href="#" title="LinkedIn">
+                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
+              </a>
+              <a href="#" title="Email">
+                <Image src={gmailIcon} alt="Email" width={24} height={24} />
+              </a>
+            </div>
+          </div>
+          <div class="member-card fade-in">
+            <div class="member-photo">
+              <Image src={contactPhoto} alt="Indhranil" width={200} height={200} class="member-image" />
+            </div>
+            <h4>Indhranil</h4>
+            <div class="social-links">
+              <a href="#" title="Instagram">
+                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
+              </a>
+              <a href="#" title="LinkedIn">
+                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
+              </a>
+              <a href="#" title="Email">
+                <Image src={gmailIcon} alt="Email" width={24} height={24} />
+              </a>
+            </div>
+          </div>
+          <div class="member-card fade-in">
+            <div class="member-photo">
+              <Image src={jagritiPhoto} alt="Jagriti Singh" width={200} height={200} class="member-image" />
+            </div>
+            <h4>Jagriti</h4>
+            <div class="social-links">
+              <a href="#" title="Instagram">
+                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
+              </a>
+              <a href="#" title="LinkedIn">
+                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
+              </a>
+              <a href="#" title="Email">
+                <Image src={gmailIcon} alt="Email" width={24} height={24} />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="member-cards">
+          <div class="member-card fade-in">
+            <div class="member-photo">
+              <Image src={sanidhyaPhoto} alt="Sanidhya" width={200} height={200} class="member-image" />
+            </div>
+            <h4>Sanidhya</h4>
+            <div class="social-links">
+              <a href="#" title="Instagram">
+                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
+              </a>
+              <a href="#" title="LinkedIn">
+                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
+              </a>
+              <a href="#" title="Email">
+                <Image src={gmailIcon} alt="Email" width={24} height={24} />
+              </a>
+            </div>
+          </div>
+          <div class="member-card fade-in">
+            <div class="member-photo">
+              <Image src={tahaPhoto} alt="Taha Munavver" width={200} height={200} class="member-image" />
+            </div>
+            <h4>Taha</h4>
+            <div class="social-links">
+              <a href="#" title="Instagram">
+                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
+              </a>
+              <a href="#" title="LinkedIn">
+                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
+              </a>
+              <a href="#" title="Email">
+                <Image src={gmailIcon} alt="Email" width={24} height={24} />
+              </a>
+            </div>
+          </div>
+          <div class="member-card fade-in">
+            <div class="member-photo">
+              <Image src={tamannaPhoto} alt="Tamanna Thakral" width={200} height={200} class="member-image" />
+            </div>
+            <h4>Tamanna</h4>
+            <div class="social-links">
+              <a href="#" title="Instagram">
+                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
+              </a>
+              <a href="#" title="LinkedIn">
+                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
+              </a>
+              <a href="#" title="Email">
+                <Image src={gmailIcon} alt="Email" width={24} height={24} />
+              </a>
+            </div>
+          </div>
+          <div class="member-card fade-in">
+            <div class="member-photo">
+              <Image src={contactPhoto} alt="Tanvi" width={200} height={200} class="member-image" />
+            </div>
+            <h4>Tanvi</h4>
+            <div class="social-links">
+              <a href="#" title="Instagram">
+                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
+              </a>
+              <a href="#" title="LinkedIn">
+                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
+              </a>
+              <a href="#" title="Email">
+                <Image src={gmailIcon} alt="Email" width={24} height={24} />
+              </a>
+            </div>
+          </div>
+          <div class="member-card fade-in">
+            <div class="member-photo">
+              <Image src={contactPhoto} alt="Vansh" width={200} height={200} class="member-image" />
+            </div>
+            <h4>Vansh</h4>
+            <div class="social-links">
+              <a href="#" title="Instagram">
+                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
+              </a>
+              <a href="#" title="LinkedIn">
+                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
+              </a>
+              <a href="#" title="Email">
+                <Image src={gmailIcon} alt="Email" width={24} height={24} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-category">
+        <h2 class="category-title fade-in">
+          Executives
+        </h2>
+        <div class="purple_light">
+          <Image src={magicStick} alt="magic stick" class="magic_stick" width={100} height={200} />
+          <Image src={purpleLight} alt="purple light" class="purple_glow" width={300} height={150} />
+        </div>
+        <div class="departments-section fade-in">
+          <div class="department-column">
+            <h3>Canvas</h3>
+            <ul>
+              <li>Kritik Mittal</li>
+              <li>Ganta Nideesh</li>
+              <li>Abhijay</li>
+              <li>Arnav Singh</li>
+              <li>Shaarav Gunsi</li>
+              <li>Megh</li>
+              <li>Vaibhav Krishna</li>
+              <li>Nishkarsh Poddar</li>
+              <li>Tanya</li>
+              <li>Aarohi</li>
+              <li>Har Ashish Arora</li>
+              <li>Shubradeep Paul</li>
+            </ul>
+          </div>
+          <div class="department-column">
+            <h3>Canvas</h3>
+            <ul>
+              <li>Avaneesh Prajot Kurade</li>
+              <li>Aayush Mishra</li>
+              <li>Nihar</li>
+              <li>Mridul Chhipa</li>
+              <li>Ditya Goel</li>
+              <li>Prayansh Gupta</li>
+              <li>Devansh Kandpal</li>
+              <li>Garv</li>
+              <li>Aryaman Raj Saxena</li>
+              <li>Aditya Singh</li>
+              <li>Darsh Viradiya</li>
+              <li>Dhruv Mittal</li>
+            </ul>
+          </div>
+          <div class="department-column">
+            <h3>Brain</h3>
+            <ul>
+              <li>Preesha Agarwal</li>
+              <li>Siddhant Agarwal</li>
+              <li>Arpit Rajput</li>
+              <li>Reyansh</li>
+              <li>Tanish Porwal</li>
+              <li>Geetansh Bansal</li>
+              <li>Shaurya Pratap Singh</li>
+              <li>Kashvi Khurana</li>
+              <li>Daksh Kundu</li>
+              <li>Mehul Shakya</li>
+              <li>Ishan Anand</li>
+            </ul>
+          </div>
+          <div class="department-column">
+            <h3>Canvas</h3>
+            <ul>
+              <li>Archit Hari</li>
+              <li>Reyansh</li>
+              <li>Drona Bajaj</li>
+              <li>Monisha Banger</li>
+              <li>Rishabh Sain</li>
+              <li>Snehal Gupta</li>
+              <li>Naman Kumar</li>
+              <li>Naman Goyal</li>
+              <li>Dhriti Jain</li>
+              <li>Shreya Khandelwal</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Fade-in animation observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in elements
+    document.addEventListener('DOMContentLoaded', () => {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      fadeElements.forEach(el => observer.observe(el));
+    });
+  </script>
+
+  <style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #100f15;
+    color: #e0e0e0;
+    background-image: url('/star_2.svg');
+    background-repeat: repeat-y;
+    background-size: 120vw auto;
+}
+
+.hero-section {
+    margin-top: 80px;
+}
+
+a {
+    color: #bb86fc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.fade-in {
+    
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* header {
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+}
+
+header .logo img {
+    height: 50px;
+}
+header {
+    background: #100f15;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #f0f0f0;
+    font-weight: bold;
+    font-size: 18px;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #bb86fc;
+
+}
+
+.hero-section {
+    margin-top: 0px;
+}
+
+header {
+    padding-bottom: 0;
+}
+
+header nav ul li a.active {
+    color: #fff;
+    border-bottom: 2px solid #bb86fc;
+    padding-bottom: 5px;
+} */
+
+.hero-section img {
+    width: 100vw;
+    height: auto;
+    display: flex;
+}
+
+.purple_light {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: -70px 0 20px;    
+    height: 100px;
+    width: 100%;
+    z-index: 0;
+}
+
+.magic_stick,
+.purple_glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+.magic_stick {
+    z-index: 3;
+    width: 300px;
+    height: auto;
+    padding: 0;
+}
+
+.purple_glow {
+    z-index: 1;
+    width: 500px;
+    height: auto;
+    opacity: 0.8;
+    filter: blur(2px);
+    animation: pulse 2s ease-in-out infinite alternate;
+}
+
+.category-title {
+    font-size: 1.8em;
+    color: #fff;
+    margin-bottom: 0px;    
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+    z-index: 1; 
+}
+
+.crew-section {
+    padding: 40px 5%;
+    text-align: center;
+}
+
+.crew-section>h1 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.team-category {
+    margin-bottom: 60px;
+}
+
+.category-title {
+    font-size: 1.8em;
+    color: #fff;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.category-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 8px;
+    background-color: #fff;
+    border-radius: 4px; 
+}
+
+.member-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+.member-card {
+    background-color: #1e1e2f;
+    /* Dark card background */
+    border-radius: 10px;
+    padding: 15px;
+    width: 160px;
+    /* Adjust as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(187, 134, 252, 0.3);
+}
+
+.member-card .member-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* Square photo */
+    background-color: #fff;
+    /* Placeholder background */
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    /* To contain the image */
+}
+
+.member-card .member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* If using actual photos */
+}
+
+.member-card h4 {
+    margin: 10px 0 8px;
+    font-size: 1.1em;
+    color: #f0f0f0;
+}
+
+.member-card .social-links a {
+    margin: 0 5px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.member-card .social-links a:hover {
+    transform: scale(1.2);
+}
+
+.member-card .social-links img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.departments-section {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 40px;
+    padding: 0 10%;
+}
+
+.department-column {
+    background-color: #1e1e2f;
+    padding: 20px;
+    border-radius: 10px;
+    width: 40%;
+    max-width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.department-column:hover {
+    transform: translateY(-3px);
+}
+
+.department-column h3 {
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.department-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.department-column ul li {
+    padding: 8px 0;
+    font-size: 1em;
+    color: #c0c0c0;
+    transition: color 0.3s ease;
+}
+
+.department-column ul li:hover {
+    color: #bb86fc;
+}
+
+footer {
+    padding: 40px 5%;
+    font-size: 0.9em;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-column h5 {
+    font-size: 1.1em;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: #b0b0b0;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #bb86fc;
+}
+
+.footer-social-icons a {
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+    transform: scale(1.1);
+}
+
+.footer-social-icons img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-newsletter .email-input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: #fff;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.footer-newsletter .email-input:focus {
+    outline: none;
+    border-color: #bb86fc;
+}
+
+.footer-newsletter label {
+    display: flex;
+    align-items: flex-start;
+    font-size: 0.85em;
+    color: #a0a0a0;
+}
+
+.footer-newsletter input[type="checkbox"] {
+    margin-right: 8px;
+    margin-top: 3px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #2a2a3a;
+    font-size: 0.85em;
+    color: #888;
+}
+
+#subscribeBtn {
+    background-color: #bb86fc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#subscribeBtn:hover {
+    background-color: #9c6dfc;
+}
+
+@media (max-width: 768px) {
+    .departments-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .department-column {
+        width: 80%;
+        max-width: none;
+    }
+
+    header nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    header nav ul li {
+        margin-left: 0;
+    }
+}
+.email-contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 400px;
+}
+
+.email-input {
+  flex: 1;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.email-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.email-input:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.email-icon-btn {
+  padding: 12px;
+  background: linear-gradient(135deg, #8a2be2, #4169e1);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.email-icon-btn:hover {
+  background: linear-gradient(135deg, #9932cc, #4682b4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+}
+
+.email-icon-btn:active {
+  transform: translateY(0);
+}
+
+/* Footer bottom styling */
+.footer-bottom {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+.faculty-container {
+  display: flex;
+  width: 65vw;
+  margin:0px auto;
+
+  flex-wrap: wrap;
+  gap: 90px;
+  padding: 50px;
+  border-radius: 15px;
+  background-color: #1e1e2f;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  /* font-family: 'Martel Sans', 'Segoe UI', Arial, sans-serif; */
+}
+
+.faculty-left {
+  flex: 0 0 250px;
+  text-align: center;
+}
+
+.faculty-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 auto 12px;
+  background: #fff;
+}
+
+.faculty-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.faculty-identity h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.4em;
+}
+
+.faculty-role {
+  font-size: 0.9em;
+  color: #b0b0b0;
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+.faculty-right {
+  flex: 1;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.faculty-right p {
+  font-size: 0.95em;
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  .faculty-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .faculty-left, .faculty-right {
+    text-align: center;
+  }
+
+  .faculty-right {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .faculty-right p {
+    text-align: center;
+  }
+}
+/* .faculty-head .category-title {
+  margin-top: -200px; /* Shift upward */
+/* } */
+
+
+  </style>
+</Layout>
