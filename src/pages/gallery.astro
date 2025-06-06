@@ -1,0 +1,307 @@
+---
+// Import Astro's Image component
+import { Image } from 'astro:assets';
+import '@/styles/global.css';
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource-variable/advent-pro';
+
+import { Navigation } from '@/components/Navigation';
+import Layout from '@/layouts/Layout.astro';
+import { StarsBackground } from '@/components/ui/stars-background';
+import { ShootingStars } from '@/components/ui/shooting-stars';
+
+// Import gallery images
+import gallery1 from '../images/gallery/1.jpeg';
+import gallery2 from '../images/gallery/2.jpeg';
+import gallery3 from '../images/gallery/3.jpeg';
+import gallery4 from '../images/gallery/4.jpeg';
+import gallery5 from '../images/gallery/5.jpeg';
+import gallery6 from '../images/gallery/6.jpeg';
+import gallery7 from '../images/gallery/7.jpeg';
+import gallery8 from '../images/gallery/8.jpeg';
+import gallery9 from '../images/gallery/9.jpeg';
+import gallery10 from '../images/gallery/10.jpeg';
+
+// Gallery data with proper TypeScript types
+interface GalleryItem {
+  id: number;
+  image: ImageMetadata;
+  caption: string;
+}
+
+const galleryItems: GalleryItem[] = [
+  { id: 1, image: gallery1, caption: 'Project Showcase' },
+  { id: 2, image: gallery2, caption: 'Annual Fest' },
+  { id: 3, image: gallery3, caption: 'Coding Competition' },
+  { id: 4, image: gallery4, caption: 'Late Night Session' },
+  { id: 5, image: gallery5, caption: 'Team Meeting' },
+  { id: 6, image: gallery6, caption: 'Workshop Session' },
+  { id: 7, image: gallery7, caption: 'Guest Lecture' },
+  { id: 8, image: gallery8, caption: 'Hackathon 2023' },
+  { id: 9, image: gallery9, caption: 'Team Outing' },
+  { id: 10, image: gallery10, caption: 'Victory Celebration' },
+];
+---
+
+<Layout title="Gallery - ARIES IITD" description="Gallery of ARIES IITD">
+    <!-- Star Background Components -->
+    <StarsBackground 
+      client:load 
+      starDensity={0.0002}
+      allStarsTwinkle={true}
+      twinkleProbability={0.8}
+      minTwinkleSpeed={0.6}
+      maxTwinkleSpeed={1.2}
+      className="fixed inset-0 z-0"
+    />
+    <ShootingStars 
+      client:load
+      minSpeed={15}
+      maxSpeed={35}
+      minDelay={800}
+      maxDelay={3000}
+      starColor="#9E00FF"
+      trailColor="#2EB9DF"
+      starWidth={12}
+      starHeight={2}
+      className="fixed inset-0 z-0"
+    />
+    
+    <div class="relative z-20">
+      <Navigation client:load />  
+    </div>
+
+  <style>
+    /* STYLES FOR GALLERY PAGE */
+    body {
+        margin: 0;
+        font-family: Intel, sans-serif;
+        background-color: #000000;
+        color: #ffffff;
+        overflow-x: hidden;
+    }
+    
+    header, footer {
+        background-color: transparent !important;
+    }
+
+    .full-gallery {
+      padding: 4rem 0 6rem;
+      background-color: transparent;
+      color: #fff;
+      position: relative;
+      z-index: 10;
+    }
+
+    .gallery-header {
+      position: relative; 
+      text-align: center;
+      margin-bottom: 5rem;
+      padding: 0 2rem;
+    }
+    
+    .gallery-header h1 {
+      font-size: 4.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      color: #ffffff;
+    }
+
+    .gallery-header p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      max-width: 650px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    .scroller {
+      max-width: 100%;
+      margin: 0 auto;
+      -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+      mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+    }
+
+    .scroller__inner {
+      display: flex;
+      gap: 2rem;
+      width: max-content;
+      animation: scroll 80s linear infinite;
+    }
+
+    .scroller:hover .scroller__inner {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      flex-shrink: 0;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+
+    .gallery-item img {
+      width: 450px;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
+    }
+
+    /* Modal styles remain the same */
+    .image-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .image-modal.show {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      text-align: center;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      transform: scale(0.95);
+      opacity: 0;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .image-modal.show .modal-content img {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .modal-content p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-header h1 {
+        font-size: 3rem;
+      }
+      .gallery-item img {
+        width: 300px;
+        height: 200px;
+      }
+    }
+  </style>
+
+  <!-- ======================= GALLERY PAGE CONTENT ======================= -->
+  <section class="full-gallery">
+    <div class="gallery-header">
+      <h1>Gallery</h1>
+      <p>Snapshots from our journey — the wins, the chaos, the late nights, the whiteboard wars, the chai breaks.
+      <br>This is where ARIES lives outside the code.</p>
+    </div>
+
+    <!-- Scroller HTML is back -->
+    <div class="scroller" data-speed="slow">
+      <div class="scroller__inner">
+        <!-- Gallery items using Astro Image component with for loop -->
+        {galleryItems.map((item) => (
+          <div class="gallery-item" onclick={`openModal('${item.image.src}', '${item.caption}')`}>
+            <Image
+              src={item.image}
+              alt={item.caption}
+              width={450}
+              height={300}
+              format="webp"
+              quality={80}
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- ======================= SCRIPT (with scroller duplication logic) ======================= -->
+  <script>
+    // Duplication script for infinite scroll
+    document.addEventListener("DOMContentLoaded", function() {
+      const scrollerInner = document.querySelector(".scroller__inner");
+      if (scrollerInner) {
+        const scrollerContent = Array.from(scrollerInner.children);
+        scrollerContent.forEach(item => {
+          const duplicatedItem = item.cloneNode(true);
+          if (duplicatedItem instanceof HTMLElement) {
+            duplicatedItem.setAttribute("aria-hidden", "true");
+            scrollerInner.appendChild(duplicatedItem);
+          }
+        });
+      }
+    });
+
+    // Script for opening and closing the image modal
+    function openModal(imageSrc: string, caption: string) {
+      const modal = document.getElementById("imageModal");
+      const modalImage = document.getElementById("modalImage") as HTMLImageElement;
+      const modalCaption = document.getElementById("modalCaption");
+      
+      if (modal && modalImage && modalCaption) {
+        modalImage.src = imageSrc;
+        modalImage.alt = caption;
+        modalCaption.textContent = caption;
+        
+        modal.classList.add("show");
+      }
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("imageModal");
+      if (modal) {
+        modal.classList.remove("show");
+        setTimeout(() => {
+          const modalImage = document.getElementById("modalImage") as HTMLImageElement;
+          if (modalImage) {
+            modalImage.src = "";
+            modalImage.alt = "";
+          }
+        }, 400); 
+      }
+    }
+
+    // Prevents modal from closing when clicking on the image/caption itself
+    document.querySelector('.modal-content')?.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+  </script>
+</Layout>

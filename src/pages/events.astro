@@ -111,30 +111,30 @@ import Layout from '@/layouts/Layout.astro';
             const noEventsMessage = document.getElementById('no-upcoming-events');
       
             function checkUpcomingEvents() {
-              if (upcomingEventsSection.querySelector('.events-grid').children.length === 0) {
-                upcomingEventsSection.style.display = 'none';
-                noEventsMessage.style.display = 'block';
+              if (upcomingEventsSection?.querySelector('.events-grid')?.children.length === 0) {
+                upcomingEventsSection!.style.display = 'none';
+                noEventsMessage!.style.display = 'block';
               } else {
-                upcomingEventsSection.style.display = 'block';
-                noEventsMessage.style.display = 'none';
+                upcomingEventsSection!.style.display = 'block';
+                noEventsMessage!.style.display = 'none';
               }
             }
       
             checkUpcomingEvents();
       
-            upcomingBtn.addEventListener('click', function() {
+            upcomingBtn?.addEventListener('click', function() {
               checkUpcomingEvents();
-              pastEventsSection.style.display = 'none';
-              upcomingBtn.classList.add('active');
-              pastBtn.classList.remove('active');
+              pastEventsSection!.style.display = 'none';
+              upcomingBtn?.classList.add('active');
+              pastBtn?.classList.remove('active');
             });
       
-            pastBtn.addEventListener('click', function() {
-              pastEventsSection.style.display = 'block';
-              upcomingEventsSection.style.display = 'none';
-              noEventsMessage.style.display = 'none';
-              pastBtn.classList.add('active');
-              upcomingBtn.classList.remove('active');
+            pastBtn?.addEventListener('click', function() {
+              pastEventsSection!.style.display = 'block';
+              upcomingEventsSection!.style.display = 'none';
+              noEventsMessage!.style.display = 'none';
+              pastBtn?.classList.add('active');
+              upcomingBtn?.classList.remove('active');
             });
       
             // --- "View More" Logic for Past Events ---
@@ -150,10 +150,10 @@ import Layout from '@/layouts/Layout.astro';
             });
       
             if (pastCards.length <= initialVisibleCards) {
-              viewMoreBtn.style.display = 'none';
+              viewMoreBtn!.style.display = 'none';
             }
       
-            viewMoreBtn.addEventListener('click', function() {
+            viewMoreBtn?.addEventListener('click', function() {
               const hiddenCards = document.querySelectorAll('#past-events .event-card.hidden');
               
               for (let i = 0; i < cardsPerLoad; i++) {
@@ -163,7 +163,7 @@ import Layout from '@/layouts/Layout.astro';
               }
               
               if (document.querySelectorAll('#past-events .event-card.hidden').length === 0) {
-                viewMoreBtn.style.display = 'none';
+                viewMoreBtn!.style.display = 'none';
               }
             });
           });
