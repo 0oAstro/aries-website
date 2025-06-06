@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Navbar,
   NavBody,
@@ -26,11 +24,11 @@ const AriesLogo = () => {
       className="relative z-20 mr-4 flex items-center space-x-3 px-2 py-1 text-sm font-normal text-white"
     >
       {/* Temporary AI-themed icon until logo is provided */}
-      <div className="w-8 h-8 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-600 to-cyan-500 flex items-center justify-center">
-        <span className="text-white font-bold text-sm">A</span>
+      <div className="w-8 h-8 rounded-full ring-2 ring-blue-500 flex items-center justify-center bg-white">
+        <img src="/arieslogo.svg" alt="Aries Logo" className="w-6 h-6" />
       </div>
       <span className="font-bold text-xl text-white">
-        Aries
+        ARIES
       </span>
     </a>
   );
@@ -56,12 +54,23 @@ const ContactButton = () => {
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState('');
+
+  useEffect(() => {
+    setCurrentPath(window.location.pathname);
+  }, []);
+
+  const isActivePage = (link: string) => {
+    if (link === '/' && currentPath === '/') return true;
+    if (link !== '/' && currentPath.startsWith(link)) return true;
+    return false;
+  };
 
   return (
     <Navbar className="fixed top-0">
       <NavBody>
         <AriesLogo />
-        <NavItems items={navigationItems} />
+        <NavItems items={navigationItems} currentPath={currentPath} />
         <ContactButton />
       </NavBody>
 
@@ -79,7 +88,11 @@ export const Navigation = () => {
               <a
                 key={idx}
                 href={item.link}
-                className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-800 dark:hover:text-neutral-100 transition-colors"
+                className={`transition-colors ${
+                  isActivePage(item.link)
+                    ? 'text-indigo-600 dark:text-indigo-400 font-semibold'
+                    : 'text-neutral-600 dark:text-neutral-300 hover:text-neutral-800 dark:hover:text-neutral-100'
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}

@@ -9,25 +9,3 @@ import '@/styles/global.css';
   <Navigation client:load />
   <LegacySection client:load />
 </Layout> 
-
-<style>
-  body {
-        margin: 0;
-        color: var(--text-primary);
-        background-color: var(--bg-primary); 
-        position: relative;
-    }
-    
-    body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-image: url('/star_2.svg');
-        background-size: cover;
-        background-position: center;
-        z-index: -2; 
-    }
-</style>

@@ -28,6 +28,7 @@ interface NavItemsProps {
   }[];
   className?: string;
   onItemClick?: () => void;
+  currentPath?: string;
 }
 
 interface MobileNavProps {
@@ -112,8 +113,15 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   );
 };
 
-export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
+export const NavItems = ({ items, className, onItemClick, currentPath }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
+
+  const isActivePage = (link: string) => {
+    if (!currentPath) return false;
+    if (link === '/' && currentPath === '/') return true;
+    if (link !== '/' && currentPath.startsWith(link)) return true;
+    return false;
+  };
 
   return (
     <motion.div
@@ -123,23 +131,36 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         className,
       )}
     >
-      {items.map((item, idx) => (
-        <a
-          onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className="relative px-4 py-2 text-white"
-          key={`link-${idx}`}
-          href={item.link}
-        >
-          {hovered === idx && (
-            <motion.div
-              layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
-            />
-          )}
-          <span className="relative z-20">{item.name}</span>
-        </a>
-      ))}
+      {items.map((item, idx) => {
+        const isActive = isActivePage(item.link);
+        return (
+          <a
+            onMouseEnter={() => setHovered(idx)}
+            onClick={onItemClick}
+            className={cn(
+              "relative px-4 py-2",
+              isActive 
+                ? "text-indigo-400 font-semibold" 
+                : "text-white"
+            )}
+            key={`link-${idx}`}
+            href={item.link}
+          >
+            {(hovered === idx || isActive) && (
+              <motion.div
+                layoutId={isActive ? "active" : "hovered"}
+                className={cn(
+                  "absolute inset-0 h-full w-full rounded-full",
+                  isActive 
+                    ? "bg-indigo-500/20 border border-indigo-400/30" 
+                    : "bg-gray-100 dark:bg-neutral-800"
+                )}
+              />
+            )}
+            <span className="relative z-20">{item.name}</span>
+          </a>
+        );
+      })}
     </motion.div>
   );
 };

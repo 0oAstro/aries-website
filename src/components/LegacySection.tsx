@@ -3,6 +3,8 @@
 import React from "react";
 import { Timeline } from "@/components/ui/timeline";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import { ShootingStars } from "@/components/ui/shooting-stars";
+import { StarsBackground } from "@/components/ui/stars-background";
 
 const achievements = [
   {
@@ -46,123 +48,34 @@ const timelineData = achievements.map((a) => {
   }
 })
 
-// const timelineData = [
-//   {
-//     title: "Present",
-//     content: (
-//       <div>
-//         <h3 className="text-xl font-bold text-white mb-4">We're here to stay</h3>
-//         <div className="grid md:grid-cols-2 gap-6">
-//           <div>
-//             <h4 className="font-semibold text-purple-400 mb-2">Key Events</h4>
-//             <span>Still student-run, still curiosity-led — building smarter, scaling wider, keeping it real</span>
-//           </div>
-//         </div>
-//       </div>
-//     ),
-//   },
-//   {
-//     title: "2025",
-//     content: (
-//       <div>
-//         <h3 className="text-xl font-bold text-white mb-4">Growing Strong</h3>
-//         <div className="grid md:grid-cols-2 gap-6">
-//           <div>
-//             <h4 className="font-semibold text-green-400 mb-2">Milestones</h4>
-//             <ul className="text-neutral-300 space-y-2">
-//               <li>• First inter-college AI competition</li>
-//               <li>• Collaboration with faculty research</li>
-//               <li>• Student-led research projects</li>
-//               <li>• Tech talk series launch</li>
-//             </ul>
-//           </div>
-//           <div className="bg-neutral-800 rounded-lg p-4">
-//             <h4 className="font-semibold text-yellow-400 mb-2">Impact Numbers</h4>
-//             <div className="grid grid-cols-2 gap-4 text-center">
-//               <div>
-//                 <div className="text-2xl font-bold text-blue-400">50+</div>
-//                 <div className="text-xs text-neutral-400">Members</div>
-//               </div>
-//               <div>
-//                 <div className="text-2xl font-bold text-green-400">12</div>
-//                 <div className="text-xs text-neutral-400">Projects</div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     ),
-//   },
-//   {
-//     title: "2024",
-//     content: (
-//       <div>
-//         <h3 className="text-xl font-bold text-white mb-4">Growing Strong</h3>
-//         <div className="grid md:grid-cols-2 gap-6">
-//           <div>
-//             <h4 className="font-semibold text-green-400 mb-2">Milestones</h4>
-//             <ul className="text-neutral-300 space-y-2">
-//               <li>• First inter-college AI competition</li>
-//               <li>• Collaboration with faculty research</li>
-//               <li>• Student-led research projects</li>
-//               <li>• Tech talk series launch</li>
-//             </ul>
-//           </div>
-//           <div className="bg-neutral-800 rounded-lg p-4">
-//             <h4 className="font-semibold text-yellow-400 mb-2">Impact Numbers</h4>
-//             <div className="grid grid-cols-2 gap-4 text-center">
-//               <div>
-//                 <div className="text-2xl font-bold text-blue-400">50+</div>
-//                 <div className="text-xs text-neutral-400">Members</div>
-//               </div>
-//               <div>
-//                 <div className="text-2xl font-bold text-green-400">12</div>
-//                 <div className="text-xs text-neutral-400">Projects</div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     ),
-//   },
-//   {
-//     title: "2023",
-//     content: (
-//       <div>
-//         <h3 className="text-xl font-bold text-white mb-4">The Beginning</h3>
-//         <div className="grid md:grid-cols-2 gap-6">
-//           <div>
-//             <ul className="text-neutral-300 space-y-2">
-//               <li>• Bootstrapped IIT Delhi's first dedicated AI-ML society</li>
-//               <li>• Collaboration with faculty research</li>
-//               <li>• Student-led research projects</li>
-//               <li>• Tech talk series launch</li>
-//             </ul>
-//           </div>
-//           <div className="bg-neutral-800 rounded-lg p-4">
-//             <h4 className="font-semibold text-yellow-400 mb-2">Impact Numbers</h4>
-//             <div className="grid grid-cols-2 gap-4 text-center">
-//               <div>
-//                 <div className="text-2xl font-bold text-blue-400">50+</div>
-//                 <div className="text-xs text-neutral-400">Members</div>
-//               </div>
-//               <div>
-//                 <div className="text-2xl font-bold text-green-400">12</div>
-//                 <div className="text-xs text-neutral-400">Projects</div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     ),
-//   },
-// ];
-
 export const LegacySection = () => {
   return (
     <div className="relative w-full bg-black min-h-screen">
+      {/* Stars Background - Covers entire section */}
+      <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
+        <StarsBackground 
+          starDensity={0.0005}
+          allStarsTwinkle={true}
+          twinkleProbability={0.8}
+          minTwinkleSpeed={0.5}
+          maxTwinkleSpeed={1.5}
+          className="absolute inset-0"
+        />
+        <ShootingStars 
+          minSpeed={15}
+          maxSpeed={35}
+          minDelay={800}
+          maxDelay={3000}
+          starColor="#9E00FF"
+          trailColor="#2EB9DF"
+          starWidth={12}
+          starHeight={2}
+          className="absolute inset-0"
+        />
+      </div>
+      
       {/* Header */}
-      <div className="pt-24 pb-16">
+      <div className="relative z-10 pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-8">
             Our Legacy
@@ -175,10 +88,12 @@ export const LegacySection = () => {
       </div>
 
       {/* Timeline */}
-      <Timeline data={timelineData} />
+      <div className="relative z-10">
+        <Timeline data={timelineData} />
+      </div>
 
       {/* Impact Statistics */}
-      <div className="py-20 bg-neutral-900">
+      <div className="relative z-10 py-20 bg-neutral-900/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-white text-center mb-12">Our Impact</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
@@ -202,7 +117,7 @@ export const LegacySection = () => {
       </div>
 
       {/* Past OCs */}
-      <div className="py-20 bg-black">
+      <div className="relative z-10 py-20 bg-black/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-white text-center mb-12">Past Trailblazers</h2>
           <div className="grid md:grid-cols-2 gap-8">
@@ -232,7 +147,7 @@ export const LegacySection = () => {
       </div>
 
       {/* Future Vision */}
-      <div className="py-20 bg-gradient-to-b from-black to-blue-900/10">
+      <div className="relative z-10 py-20 bg-gradient-to-b from-black/80 to-blue-900/20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-8">Looking Ahead</h2>
           <p className="text-lg text-neutral-300 mb-8">
