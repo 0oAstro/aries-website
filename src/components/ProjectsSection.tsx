@@ -12,17 +12,6 @@ import { StarsBackground } from "@/components/ui/stars-background";
 
 const projects = [
   {
-    title: "ARIES Bootcamp",
-    description: "A 6 week long training camp where students are posed with new learnings and challenges every single day .",
-    link: "#",
-    github: "#",
-    category: "Computer Vision",
-    techStack: ["Python", "PyTorch", "OpenCV", "NumPy"],
-    featured: true,
-    image: "https://placehold.co/600x400.png",
-    team: []
-  },
-  {
     title: "Life Sized TARS Robot",
     description: "A Replica of the TARS robot from Interstellar, produced by ARIES team in a showcase visit to Japanese Students.",
     link: "#",
@@ -30,18 +19,7 @@ const projects = [
     category: "Natural Language Processing",
     techStack: ["Python", "NLTK", "Flask", "MongoDB"],
     featured: true,
-    image: "https://placehold.co/600x400.png",
-    team: []
-  },
-  {
-    title: "CSoT",
-    description: "Numerours models ranging from mortality prediction model to Gen-AI Chatbot Counsellor , developed by students in a 6 week long bootcamp.",
-    link: "#",
-    github: "#",
-    category: "Robotics",
-    techStack: ["Python", "ROS", "TensorFlow", "OpenCV"],
-    featured: true,
-    image: "https://placehold.co/600x400.png",
+    image: '/projects/tars.png',
     team: []
   },
   {
@@ -52,7 +30,7 @@ const projects = [
     category: "Healthcare",
     techStack: ["Python", "Keras", "Medical Imaging", "CNN"],
     featured: false,
-    image: "https://placehold.co/600x400.png",
+    image: '/projects/military.png',
     team: []
   },
   {
@@ -63,7 +41,7 @@ const projects = [
     category: "IoT",
     techStack: ["Python", "Scikit-learn", "IoT", "Raspberry Pi"],
     featured: false,
-    image: "https://placehold.co/600x400.png",
+    image: '/projects/energy.png',
     team: []
   },
   {
@@ -74,7 +52,7 @@ const projects = [
     category: "Natural Language Processing",
     techStack: ["Python", "Transformers", "FastAPI", "React"],
     featured: false,
-    image: "https://placehold.co/400x300.png",
+    image: '/projects/chatbot.png',
     team: []
   },
   {
@@ -85,7 +63,7 @@ const projects = [
     category: "Finance",
     techStack: ["Python", "LSTM", "Pandas", "Yahoo Finance API"],
     featured: false,
-    image: "https://placehold.co/400x300.png",
+    image: '/projects/stocks.png',
     team: []
   },
   {
@@ -96,7 +74,7 @@ const projects = [
     category: "Computer Vision",
     techStack: ["Python", "OpenCV", "FaceNet", "SQLite"],
     featured: false,
-    image: "https://placehold.co/400x300.png",
+    image: '/projects/tresswap.png',
     team: []
   }
 ];
