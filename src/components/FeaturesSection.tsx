@@ -182,7 +182,7 @@ export const FeaturesSection = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="/contact"
+              href="https://chat.whatsapp.com/D98xdCtosjr2d8wchQJSvL"
               style={{ background: 'linear-gradient(to bottom, rgb(106,58,196), rgb(85,46,157))' }}
               className="px-8 py-4 rounded-md text-white text-lg font-bold relative cursor-pointer hover:-translate-y-1 transition duration-300 inline-block text-center shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]"
             >
