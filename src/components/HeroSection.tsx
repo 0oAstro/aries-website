@@ -14,7 +14,7 @@ export const HeroSection = () => {
   return (
     <div className="min-h-screen relative w-full bg-black flex flex-col items-center justify-center overflow-hidden">
       {/* Background Effects */}
-      <div className="fixed inset-0 w-full h-full z-0">
+      <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
         <ShootingStars 
           minSpeed={10}
           maxSpeed={30}
@@ -41,7 +41,7 @@ export const HeroSection = () => {
       />
 
       {/* Content */}
-        <div className="relative z-10 flex flex-col lg:flex-row lg:space-x-8 items-center justify-center px-4">
+        <div className="relative z-10 flex flex-col lg:flex-row lg:space-x-8 items-center justify-center px-4 pt-20 md:pt-24">
           <span className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 lg:mb-8 leading-tight bg-gradient-to-br from-white via-purple-200 to-pink-200 bg-clip-text text-transparent text-center lg:text-left">
             Welcome
             <br />
