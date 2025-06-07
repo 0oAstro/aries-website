@@ -12,7 +12,7 @@ import { StarsBackground } from "@/components/ui/stars-background";
 
 const projects = [
   {
-    title: "Life Sized TARS Robot",
+    title: "Real life TARS Robot",
     description: "A Replica of the TARS robot from Interstellar, produced by ARIES team in a showcase visit to Japanese Students.",
     link: "#",
     github: "#",
@@ -40,7 +40,7 @@ const projects = [
     github: "#",
     category: "IoT",
     techStack: ["Python", "Scikit-learn", "IoT", "Raspberry Pi"],
-    featured: false,
+    featured: true,
     image: '/projects/energy.png',
     team: []
   },
@@ -62,7 +62,7 @@ const projects = [
     github: "#",
     category: "Finance",
     techStack: ["Python", "LSTM", "Pandas", "Yahoo Finance API"],
-    featured: false,
+    featured: true,
     image: '/projects/stocks.png',
     team: []
   },
