@@ -7,6 +7,8 @@ export interface Props {
 }
 
 const { title, description = "Aries - The Artificial Intelligence Society of IIT Delhi" } = Astro.props;
+
+import Analytics from '@vercel/analytics/astro'
 ---
 
 <!DOCTYPE html>
@@ -20,6 +22,7 @@ const { title, description = "Aries - The Artificial Intelligence Society of IIT
     <title>{title}</title>
   </head>
   <body class="bg-black text-white min-h-screen">
+    <Analytics />
     <main class="relative">
       <slot />
     </main>
