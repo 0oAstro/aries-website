@@ -41,15 +41,15 @@ export const HeroSection = () => {
       />
 
       {/* Content */}
-        <div className="relative z-10 flex flex-row space-apart items-center">
-          <span className="text-6xl lg:text-7xl font-light mb-8 leading-tight bg-gradient-to-br from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
+        <div className="relative z-10 flex flex-col lg:flex-row lg:space-x-8 items-center justify-center px-4">
+          <span className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 lg:mb-8 leading-tight bg-gradient-to-br from-white via-purple-200 to-pink-200 bg-clip-text text-transparent text-center lg:text-left">
             Welcome
             <br />
             To
             <br />
             <span className="font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">ARIES</span>
           </span>
-          <ReactSVG src="/arieslogo.svg" className="drop-shadow-xl drop-shadow-white/100 scale-75" width={10} height={10}/>  
+          <ReactSVG src="/arieslogo.svg" className="drop-shadow-xl drop-shadow-white/100 scale-50 sm:scale-60 lg:scale-75" width={10} height={10}/>  
         </div>
     </div>
   );

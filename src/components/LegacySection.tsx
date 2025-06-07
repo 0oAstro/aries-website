@@ -1,8 +1,4 @@
-"use client";
-
-import React from "react";
 import { Timeline } from "@/components/ui/timeline";
-import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
 
