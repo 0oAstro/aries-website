@@ -1,5 +1,6 @@
 ---
 import Footer from '../components/Footer.astro';
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 
 export interface Props {
   title: string;
@@ -33,6 +34,7 @@ import Analytics from '@vercel/analytics/astro'
     <div class="relative z-30">
       <Footer />
     </div>
+    <SpeedInsights />
   </body>
 </html>
 
