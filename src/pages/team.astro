@@ -42,7 +42,14 @@ function getImage(path: string): string | ImageMetadata | undefined {
 }
 ---
 
-<Layout title={title} description={description}>
+<Layout 
+  title="Meet Our Team | Aries AI Society IIT Delhi" 
+  description="Meet the brilliant minds behind Aries AI Society at IIT Delhi. Our diverse team of AI enthusiasts, researchers, and innovators are driving the future of artificial intelligence and machine learning."
+  keywords="Aries team, AI society members, IIT Delhi students, machine learning experts, AI researchers, student leaders, tech innovators, artificial intelligence community"
+  image="/images/people/family_photo.png"
+  imageAlt="Aries AI Society team members at IIT Delhi"
+  type="website"
+>
   <Navigation client:load />
 
   <!-- ======================= MAIN TEAM CONTENT ======================= -->
@@ -75,7 +82,7 @@ function getImage(path: string): string | ImageMetadata | undefined {
           <div class="faculty-left">
             <div class="faculty-photo">
               <Image 
-                src={getImage(teamData.facultyHead.photo)} 
+                src={getImage(teamData.facultyHead.photo) as ImageMetadata} 
                 alt={teamData.facultyHead.name} 
                 width={300} 
                 height={400}
@@ -108,7 +115,7 @@ function getImage(path: string): string | ImageMetadata | undefined {
           {teamData.overallCoordinators.map(member => (
             <div class="member-card fade-in">
               <div class="member-photo">
-                <Image src={getImage(member.photo)} alt={member.name} width={200} height={200} class="member-image" />
+                <Image src={getImage(member.photo) as ImageMetadata} alt={member.name} width={200} height={200} class="member-image" />
               </div>
               <h4>{member.name}</h4>
               <div class="social-links">
@@ -131,7 +138,7 @@ function getImage(path: string): string | ImageMetadata | undefined {
           {teamData.coordinators.map(member => (
             <div class="member-card fade-in">
               <div class="member-photo">
-                <Image src={getImage(member.photo)} alt={member.name} width={200} height={200} class="member-image" />
+                <Image src={getImage(member.photo) as ImageMetadata} alt={member.name} width={200} height={200} class="member-image" />
               </div>
               <h4>{member.name}</h4>
               <div class="social-links">

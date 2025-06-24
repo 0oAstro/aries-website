@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
+    "@astrojs/sitemap": "^3.4.1",
     "@fontsource-variable/advent-pro": "^5.2.5",
     "@fontsource/poppins": "^5.2.6",
     "@hookform/resolvers": "^5.0.1",
