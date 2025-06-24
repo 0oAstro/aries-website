@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://adorable-aries.vercel.app', // Replace with your actual domain
+  site: 'https://ariesiitd.com',
   integrations: [
     react(),
     sitemap({
@@ -15,12 +15,12 @@ export default defineConfig({
       priority: 0.7,
       lastmod: new Date(),
       customPages: [
-        'https://adorable-aries.vercel.app/', // Replace with your actual domain
-        'https://adorable-aries.vercel.app/team',
-        'https://adorable-aries.vercel.app/events', 
-        'https://adorable-aries.vercel.app/projects',
-        'https://adorable-aries.vercel.app/gallery',
-        'https://adorable-aries.vercel.app/legacy'
+        'https://ariesiitd.com/',
+        'https://ariesiitd.com/team',
+        'https://ariesiitd.com/events', 
+        'https://ariesiitd.com/projects',
+        'https://ariesiitd.com/gallery',
+        'https://ariesiitd.com/legacy'
       ]
     })
   ],

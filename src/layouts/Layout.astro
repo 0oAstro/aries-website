@@ -45,6 +45,7 @@ import Analytics from '@vercel/analytics/astro'
     <link rel="manifest" href="/site.webmanifest" />
     
     <!-- SEO Component -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <SEO 
       title={title}
       description={description}
@@ -78,7 +79,6 @@ import Analytics from '@vercel/analytics/astro'
     </style>
   </head>
   <body class="bg-black text-white min-h-screen">
-    <Analytics />
     <main class="relative">
       <slot />
     </main>
@@ -86,6 +86,7 @@ import Analytics from '@vercel/analytics/astro'
       <Footer />
     </div>
     <SpeedInsights />
+    <Analytics />
   </body>
 </html>
 
