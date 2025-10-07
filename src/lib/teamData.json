@@ -1,0 +1,140 @@
+{
+  "facultyHead": {
+    "name": "Prof. Tanmoy Chakraborty",
+    "photo": "../images/people/faculty_head.png",
+    "role": "Faculty member, Yardi School of AI, IIT Delhi\nAssociate Professor, Dept. of Electrical Engineering, IIT Delhi\nFaculty Head, ARIES IITD",
+    "bio": [
+      "He serves as the Faculty Advisor of ARIES. He is an Associate Professor at IIT Delhi where he leads research at the intersection of Artificial Intelligence, Natural Language Processing, and Network Science.",
+      "He completed his Ph.D. from IIT Kharagpur and has published extensively in top-tier AI and data science venues. His work focuses on real-world challenges such as misinformation detection, social behavior analysis, and large-scale language understanding. He also serves as an Associate Editor for IEEE Transactions on Knowledge and Data Engineering (TKDE).",
+      "As the guiding academic force behind ARIES, Prof. Chakraborty brings deep research expertise, mentorship, and strategic vision — helping shape the club's growth as a hub for impactful AI and ML exploration."
+    ]
+  },
+  "overallCoordinators": [
+    {
+      "name": "Aastha",
+      "photo": "../images/people/Aastha.jpeg",
+      "socials": { "instagram": "#", "linkedin": "#", "email": "#" }
+    },
+    {
+      "name": "Anmol",
+      "photo": "../images/people/Anmol.jpg",
+      "socials": { "instagram": "#", "linkedin": "#", "email": "#" }
+    },
+    {
+      "name": "Raj",
+      "photo": "../images/people/Raj.jpg",
+      "socials": { "instagram": "#", "linkedin": "#", "email": "#" }
+    }
+  ],
+  "coordinators": [
+    {
+      "name": "Ansh",
+      "photo": "../images/people/Ansh_Singh.jpg",
+      "socials": { "instagram": "#", "linkedin": "#", "email": "#" }
+    },
+    {
+      "name": "Garvish",
+      "photo": "../images/people/Garviah_Khandelwal.jpg",
+      "socials": { "instagram": "#", "linkedin": "#", "email": "#" }
+    },
+    {
+      "name": "Indhranil",
+      "photo": "../images/people/Indhranil.webp",
+      "socials": { "instagram": "#", "linkedin": "#", "email": "#" }
+    },
+    {
+      "name": "Jagriti",
+      "photo": "../images/people/Jagriti_singh.jpg",
+      "socials": { "instagram": "#", "linkedin": "#", "email": "#" }
+    },
+    {
+      "name": "Sabhya",
+      "photo": "../images/people/Sabhya_Khurana.webp",
+      "socials": { "instagram": "#", "linkedin": "#", "email": "#" }
+    },
+    {
+      "name": "Arunabh",
+      "photo": "../images/people/Arunabh_Roy.webp",
+      "socials": { "instagram": "#", "linkedin": "#", "email": "#" }
+    },
+    {
+      "name": "Sanidhya",
+      "photo": "../images/people/Sanidhya_Ojha.webp",
+      "socials": { "instagram": "#", "linkedin": "#", "email": "#" }
+    },
+    {
+      "name": "Taha",
+      "photo": "../images/people/Taha_Munavver.jpg",
+      "socials": { "instagram": "#", "linkedin": "#", "email": "#" }
+    },
+    {
+      "name": "Tamanna",
+      "photo": "../images/people/Tamanna_Thakral.jpg",
+      "socials": { "instagram": "#", "linkedin": "#", "email": "#" }
+    },
+    {
+      "name": "Tanvi",
+      "photo": "../images/people/Tanvi.webp",
+      "socials": { "instagram": "#", "linkedin": "#", "email": "#" }
+    },
+    {
+      "name": "Vansh",
+      "photo": "../images/people/Vansh_Ramani.avif",
+      "socials": { "instagram": "#", "linkedin": "#", "email": "#" }
+    }
+  ],
+  "executives": {
+    "Canvas": [
+      "Kritik Mittal",
+      "Ganta Nideesh",
+      "Abhijay",
+      "Arnav Singh",
+      "Shaarav Gunsi",
+      "Megh Bhavesh Jesalpura",
+      "Vaibhav Krishna",
+      "Dhairya Kucchal",
+      "Nishkarsh Poddar",
+      "Tanya",
+      "Aarohi",
+      "Har Ashish Arora",
+      "Shubradeep Paul",
+      "Avaneesh Prajot Kurade",
+      "Aayush Mishra",
+      "Ambar Gogia",
+      "Nihar ",
+      "Mridul Chhipa ",
+      "Ditya Goel",
+      "Prayansh Gupta",
+      "Devansh Kandpal",
+      "Garv ",
+      "Aryaman Raj Saxena",
+      "Aditya singh ",
+      "Darsh Viradiya ",
+      "Amaan",
+      "Shourya Choudhary"
+    ],
+    "Brain": [
+      "Preesha Agrawal",
+      "Siddhant Agrawal",
+      "Arpit Rajput",
+      "Tanish Porwal",
+      "Geetansh Bansal",
+      "Shaurya Pratap Singh",
+      "Kashvi Khurana",
+      "Daksh Kundu",
+      "Mehul Shakya",
+      "Ishan Anand",
+      "Archit Hari",
+      "Reyansh",
+      "Drona Bajaj",
+      " Monisha Bangar ",
+      "Rishabh Sain",
+      " Snehal Gupta",
+      "Naman Kumar ",
+      "Naman Goyal",
+      "Dhriti Jain",
+      "Shreya Khandelwal ",
+      "Dakshita"
+    ]
+  }
+}

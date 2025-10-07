@@ -12,44 +12,44 @@ import '@fontsource-variable/advent-pro';
 import familyPhoto from '../images/people/family_photo.png';
 import magicStick from '../images/assets/magic_stick.png';
 import purpleLight from '../images/assets/purple_light.svg';
-import facultyHead from '../images/people/faculty_head.png';
-import aasthaPhoto from '../images/people/Aastha.jpeg';
-import anmolPhoto from '../images/people/Anmol.jpg';
-import rajPhoto from '../images/people/Raj.jpg';
-import anshPhoto from '../images/people/Ansh_Singh.jpg';
-import garvishPhoto from '../images/people/Garviah_Khandelwal.jpg';
-import contactPhoto from '../images/assets/contact_photo.png';
-import jagritiPhoto from '../images/people/Jagriti_singh.jpg';
-import sanidhyaPhoto from '../images/people/Sanidhya_Ojha.webp';
-import sabhyaPhoto from '../images/people/Sabhya_Khurana.webp';
-import tahaPhoto from '../images/people/Taha_Munavver.jpg';
-import tamannaPhoto from '../images/people/Tamanna_Thakral.jpg';
-import vanshPhoto from '../images/people/Vansh_Ramani.avif'
-import aroyPhoto from '../images/people/Arunabh_Roy.webp'
-import indhranilPhoto from '../images/people/Indhranil.webp'
-import tanviPhoto from '../images/people/Tanvi.webp'
 
 
 // Social media icons
-import ariesLogo from '../images/assets/aries_logo.png';
 import instagramIcon from '../images/assets/instagram.png';
 import linkedinIcon from '../images/assets/linkedin.png';
 import gmailIcon from '../images/assets/gmail.png';
-import instagramFooter from '../images/assets/instagram_footer.png';
-import facebookIcon from '../images/assets/facebook.png';
-import twitterIcon from '../images/assets/twitter.png';
-import githubIcon from '../images/assets/github.png';
-import redditIcon from '../images/assets/reddit.png';
-import whatsappIcon from '../images/assets/whatsapp.png';
 import { Navigation } from '@/components/Navigation';
 import Layout from '@/layouts/Layout.astro';
 
 // Page title and meta information
 const title = "Team - ARIES IITD";
 const description = "Meet the ARIES CREW - Faculty Head, Coordinators, and Executives driving AI and ML innovation at IIT Delhi";
+
+// Load team data
+const teamData = await (await import('../lib/teamData.json')).default;
+
+// Dynamically import all people images
+const peopleImages = import.meta.glob('../images/people/*', { eager: true, import: 'default' });
+
+function getImage(path: string): string | ImageMetadata | undefined {
+  const cleanPath = path.replace(/^\.\.\//, '');
+  for (const key in peopleImages) {
+    if (key.endsWith(cleanPath.replace('src/', ''))) {
+      return peopleImages[key] as string | ImageMetadata;
+    }
+  }
+  return undefined;
+}
 ---
 
-<Layout title={title} description={description}>
+<Layout 
+  title="Meet Our Team | Aries AI Society IIT Delhi" 
+  description="Meet the brilliant minds behind Aries AI Society at IIT Delhi. Our diverse team of AI enthusiasts, researchers, and innovators are driving the future of artificial intelligence and machine learning."
+  keywords="Aries team, AI society members, IIT Delhi students, machine learning experts, AI researchers, student leaders, tech innovators, artificial intelligence community"
+  image="/images/people/family_photo.png"
+  imageAlt="Aries AI Society team members at IIT Delhi"
+  type="website"
+>
   <Navigation client:load />
 
   <!-- ======================= MAIN TEAM CONTENT ======================= -->
@@ -82,27 +82,23 @@ const description = "Meet the ARIES CREW - Faculty Head, Coordinators, and Execu
           <div class="faculty-left">
             <div class="faculty-photo">
               <Image 
-                src={facultyHead} 
-                alt="Prof. Tanmoy Chakraborty" 
+                src={getImage(teamData.facultyHead.photo) as ImageMetadata} 
+                alt={teamData.facultyHead.name} 
                 width={300} 
                 height={400}
                 class="faculty-image"
               />
             </div>
             <div class="faculty-identity">
-              <h3>Prof. Tanmoy Chakraborty</h3>
+              <h3>{teamData.facultyHead.name}</h3>
               <p class="faculty-role">
-                Faculty member, Yardi School of AI, IIT Delhi<br />
-                Associate Professor, Dept. of Electrical Engineering, IIT Delhi<br />
-                Faculty Head, ARIES IITD
+                {teamData.facultyHead.role.split('\n').map(line => <>{line}<br /></>)}
               </p>
             </div>
           </div>
 
           <div class="faculty-right">
-            <p>He serves as the Faculty Advisor of ARIES. He is an Associate Professor at IIT Delhi where he leads research at the intersection of Artificial Intelligence, Natural Language Processing, and Network Science.</p>
-            <p>He completed his Ph.D. from IIT Kharagpur and has published extensively in top-tier AI and data science venues. His work focuses on real-world challenges such as misinformation detection, social behavior analysis, and large-scale language understanding. He also serves as an Associate Editor for IEEE Transactions on Knowledge and Data Engineering (TKDE).</p>
-            <p>As the guiding academic force behind ARIES, Prof. Chakraborty brings deep research expertise, mentorship, and strategic vision — helping shape the club's growth as a hub for impactful AI and ML exploration.</p>
+            {teamData.facultyHead.bio.map(paragraph => <p>{paragraph}</p>)}
           </div>
         </div>
       </div>
@@ -116,64 +112,19 @@ const description = "Meet the ARIES CREW - Faculty Head, Coordinators, and Execu
           <Image src={purpleLight} alt="purple light" class="purple_glow" width={300} height={150} />
         </div>
         <div class="member-cards">
-          <div class="member-card fade-in">
-            <div class="member-photo">
-              <Image src={aasthaPhoto} alt="Aastha" width={200} height={200} class="member-image" />
+          {teamData.overallCoordinators.map(member => (
+            <div class="member-card fade-in">
+              <div class="member-photo">
+                <Image src={getImage(member.photo) as ImageMetadata} alt={member.name} width={200} height={200} class="member-image" />
+              </div>
+              <h4>{member.name}</h4>
+              <div class="social-links">
+                <a href={member.socials.instagram} title="Instagram"><Image src={instagramIcon} alt="Instagram" width={24} height={24} /></a>
+                <a href={member.socials.linkedin} title="LinkedIn"><Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} /></a>
+                <a href={member.socials.email} title="Email"><Image src={gmailIcon} alt="Email" width={24} height={24} /></a>
+              </div>
             </div>
-            <h4>Aastha</h4>
-            <div class="social-links">
-              <a href="#" title="Instagram">
-                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="#" title="LinkedIn">
-                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
-              </a>
-              <a href="#" title="Email">
-                <Image src={gmailIcon} alt="Email" width={24} height={24} />
-              </a>
-            </div>
-          </div>
-          <div class="member-card fade-in">
-            <div class="member-photo">
-              <Image 
-                src={anmolPhoto} 
-                alt="Anmol Goel" 
-                width={200} 
-                height={200}
-                class="member-image"
-                style="object-fit: cover; object-position: center center;"
-              />
-            </div>
-            <h4>Anmol</h4>
-            <div class="social-links">
-              <a href="#" title="Instagram">
-                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="#" title="LinkedIn">
-                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
-              </a>
-              <a href="#" title="Email">
-                <Image src={gmailIcon} alt="Email" width={24} height={24} />
-              </a>
-            </div>
-          </div>
-          <div class="member-card fade-in">
-            <div class="member-photo">
-              <Image src={rajPhoto} alt="Raj" width={200} height={200} class="member-image" />
-            </div>
-            <h4>Raj</h4>
-            <div class="social-links">
-              <a href="#" title="Instagram">
-                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="#" title="LinkedIn">
-                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
-              </a>
-              <a href="#" title="Email">
-                <Image src={gmailIcon} alt="Email" width={24} height={24} />
-              </a>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
@@ -184,195 +135,19 @@ const description = "Meet the ARIES CREW - Faculty Head, Coordinators, and Execu
           <Image src={purpleLight} alt="purple light" class="purple_glow" width={300} height={150} />
         </div>
         <div class="member-cards">
-          <div class="member-card fade-in">
-            <div class="member-photo">
-              <Image src={anshPhoto} alt="Ansh Singh" width={200} height={200} class="member-image" />
+          {teamData.coordinators.map(member => (
+            <div class="member-card fade-in">
+              <div class="member-photo">
+                <Image src={getImage(member.photo) as ImageMetadata} alt={member.name} width={200} height={200} class="member-image" />
+              </div>
+              <h4>{member.name}</h4>
+              <div class="social-links">
+                <a href={member.socials.instagram} title="Instagram"><Image src={instagramIcon} alt="Instagram" width={24} height={24} /></a>
+                <a href={member.socials.linkedin} title="LinkedIn"><Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} /></a>
+                <a href={member.socials.email} title="Email"><Image src={gmailIcon} alt="Email" width={24} height={24} /></a>
+              </div>
             </div>
-            <h4>Ansh</h4>
-            <div class="social-links">
-              <a href="#" title="Instagram">
-                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="#" title="LinkedIn">
-                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
-              </a>
-              <a href="#" title="Email">
-                <Image src={gmailIcon} alt="Email" width={24} height={24} />
-              </a>
-            </div>
-          </div>
-          <div class="member-card fade-in">
-            <div class="member-photo">
-              <Image src={garvishPhoto} alt="Garvish Khandelwal" width={200} height={200} class="member-image" />
-            </div>
-            <h4>Garvish</h4>
-            <div class="social-links">
-              <a href="#" title="Instagram">
-                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="#" title="LinkedIn">
-                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
-              </a>
-              <a href="#" title="Email">
-                <Image src={gmailIcon} alt="Email" width={24} height={24} />
-              </a>
-            </div>
-          </div>
-          <div class="member-card fade-in">
-            <div class="member-photo">
-              <Image src={indhranilPhoto} alt="Indhranil" width={200} height={200} class="member-image" />
-            </div>
-            <h4>Indhranil</h4>
-            <div class="social-links">
-              <a href="#" title="Instagram">
-                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="#" title="LinkedIn">
-                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
-              </a>
-              <a href="#" title="Email">
-                <Image src={gmailIcon} alt="Email" width={24} height={24} />
-              </a>
-            </div>
-          </div>
-          <div class="member-card fade-in">
-            <div class="member-photo">
-              <Image src={jagritiPhoto} alt="Jagriti Singh" width={200} height={200} class="member-image" />
-            </div>
-            <h4>Jagriti</h4>
-            <div class="social-links">
-              <a href="#" title="Instagram">
-                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="#" title="LinkedIn">
-                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
-              </a>
-              <a href="#" title="Email">
-                <Image src={gmailIcon} alt="Email" width={24} height={24} />
-              </a>
-            </div>
-          </div>
-          <div class="member-card fade-in">
-            <div class="member-photo">
-              <Image src={sabhyaPhoto} alt="Sabhya Khurana" width={200} height={200} class="member-image" />
-            </div>
-            <h4>Sabhya</h4>
-            <div class="social-links">
-              <a href="#" title="Instagram">
-                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="#" title="LinkedIn">
-                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
-              </a>
-              <a href="#" title="Email">
-                <Image src={gmailIcon} alt="Email" width={24} height={24} />
-              </a>
-            </div>
-          </div>
-          <div class="member-card fade-in">
-            <div class="member-photo">
-              <Image src={aroyPhoto} alt="Arunabh Roy" width={200} height={200} class="member-image" />
-            </div>
-            <h4>Arunabh</h4>
-            <div class="social-links">
-              <a href="#" title="Instagram">
-                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="#" title="LinkedIn">
-                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
-              </a>
-              <a href="#" title="Email">
-                <Image src={gmailIcon} alt="Email" width={24} height={24} />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="member-cards mt-6">
-          <div class="member-card fade-in">
-            <div class="member-photo">
-              <Image src={sanidhyaPhoto} alt="Sanidhya" width={200} height={200} class="member-image" />
-            </div>
-            <h4>Sanidhya</h4>
-            <div class="social-links">
-              <a href="#" title="Instagram">
-                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="#" title="LinkedIn">
-                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
-              </a>
-              <a href="#" title="Email">
-                <Image src={gmailIcon} alt="Email" width={24} height={24} />
-              </a>
-            </div>
-          </div>
-          <div class="member-card fade-in">
-            <div class="member-photo">
-              <Image src={tahaPhoto} alt="Taha Munavver" width={200} height={200} class="member-image" />
-            </div>
-            <h4>Taha</h4>
-            <div class="social-links">
-              <a href="#" title="Instagram">
-                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="#" title="LinkedIn">
-                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
-              </a>
-              <a href="#" title="Email">
-                <Image src={gmailIcon} alt="Email" width={24} height={24} />
-              </a>
-            </div>
-          </div>
-          <div class="member-card fade-in">
-            <div class="member-photo">
-              <Image src={tamannaPhoto} alt="Tamanna Thakral" width={200} height={200} class="member-image" />
-            </div>
-            <h4>Tamanna</h4>
-            <div class="social-links">
-              <a href="#" title="Instagram">
-                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="#" title="LinkedIn">
-                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
-              </a>
-              <a href="#" title="Email">
-                <Image src={gmailIcon} alt="Email" width={24} height={24} />
-              </a>
-            </div>
-          </div>
-          <div class="member-card fade-in">
-            <div class="member-photo">
-              <Image src={tanviPhoto} alt="Tanvi" width={200} height={200} class="member-image" />
-            </div>
-            <h4>Tanvi</h4>
-            <div class="social-links">
-              <a href="#" title="Instagram">
-                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="#" title="LinkedIn">
-                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
-              </a>
-              <a href="#" title="Email">
-                <Image src={gmailIcon} alt="Email" width={24} height={24} />
-              </a>
-            </div>
-          </div>
-          <div class="member-card fade-in">
-            <div class="member-photo">
-              <Image src={vanshPhoto} alt="Vansh" width={200} height={200} class="member-image" />
-            </div>
-            <h4>Vansh</h4>
-            <div class="social-links">
-              <a href="#" title="Instagram">
-                <Image src={instagramIcon} alt="Instagram" width={24} height={24} />
-              </a>
-              <a href="#" title="LinkedIn">
-                <Image src={linkedinIcon} alt="LinkedIn" width={24} height={24} />
-              </a>
-              <a href="#" title="Email">
-                <Image src={gmailIcon} alt="Email" width={24} height={24} />
-              </a>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
@@ -384,74 +159,64 @@ const description = "Meet the ARIES CREW - Faculty Head, Coordinators, and Execu
           <Image src={magicStick} alt="magic stick" class="magic_stick" width={100} height={200} />
           <Image src={purpleLight} alt="purple light" class="purple_glow" width={300} height={150} />
         </div>
-        <div class="departments-section fade-in">
-          <div class="department-column">
-            <h3>Canvas</h3>
-            <ul>
-              <li>Kritik Mittal</li>
-              <li>Ganta Nideesh</li>
-              <li>Abhijay</li>
-              <li>Arnav Singh</li>
-              <li>Shaarav Gunsi</li>
-              <li>Megh</li>
-              <li>Vaibhav Krishna</li>
-              <li>Nishkarsh Poddar</li>
-              <li>Tanya</li>
-              <li>Aarohi</li>
-              <li>Har Ashish Arora</li>
-              <li>Shubradeep Paul</li>
-              <li>Shourya Choudhary</li>
-            </ul>
-          </div>
-          <div class="department-column">
-            <h3>Canvas</h3>
-            <ul>
-              <li>Avaneesh Prajot Kurade</li>
-              <li>Aayush Mishra</li>
-              <li>Nihar</li>
-              <li>Mridul Chhipa</li>
-              <li>Ditya Goel</li>
-              <li>Prayansh Gupta</li>
-              <li>Devansh Kandpal</li>
-              <li>Garv</li>
-              <li>Aryaman Raj Saxena</li>
-              <li>Aditya Singh</li>
-              <li>Darsh Viradiya</li>
-              <li>Dhruv Mittal</li>
-            </ul>
-          </div>
-          <div class="department-column">
-            <h3>Brain</h3>
-            <ul>
-              <li>Preesha Agarwal</li>
-              <li>Siddhant Agarwal</li>
-              <li>Arpit Rajput</li>
-              <li>Reyansh</li>
-              <li>Tanish Porwal</li>
-              <li>Geetansh Bansal</li>
-              <li>Shaurya Pratap Singh</li>
-              <li>Kashvi Khurana</li>
-              <li>Daksh Kundu</li>
-              <li>Mehul Shakya</li>
-              <li>Ishan Anand</li>
-            </ul>
-          </div>
-          <div class="department-column">
-            <h3>Brain</h3>
-            <ul>
-              <li>Archit Hari</li>
-              <li>Reyansh</li>
-              <li>Drona Bajaj</li>
-              <li>Monisha Banger</li>
-              <li>Rishabh Sain</li>
-              <li>Snehal Gupta</li>
-              <li>Naman Kumar</li>
-              <li>Naman Goyal</li>
-              <li>Dhriti Jain</li>
-              <li>Shreya Khandelwal</li>
-            </ul>
-          </div>
-        </div>
+        {(() => {
+          // Sort and split Brain and Canvas
+          const brain = [...teamData.executives.Brain.map(n => n.trim())].sort((a, b) => a.localeCompare(b));
+          const canvas = [...teamData.executives.Canvas.map(n => n.trim())].sort((a, b) => a.localeCompare(b));
+          // Find max length for padding
+          const maxLen = Math.max(brain.length, canvas.length);
+          // Pad both arrays to same length
+          while (brain.length < maxLen) brain.push("");
+          while (canvas.length < maxLen) canvas.push("");
+          // Split each into two columns
+          const split = (arr: string[]): [string[], string[]] => {
+            const half = Math.ceil(arr.length / 2);
+            return [arr.slice(0, half), arr.slice(half)];
+          };
+          const [brain1, brain2] = split(brain);
+          const [canvas1, canvas2] = split(canvas);
+          // Find max column length for grid
+          const colLen = Math.max(brain1.length, brain2.length, canvas1.length, canvas2.length);
+          // Pad columns to equal length
+          const pad = (arr: string[]): string[] => {
+            while (arr.length < colLen) arr.push("");
+            return arr;
+          };
+          pad(brain1); pad(brain2); pad(canvas1); pad(canvas2);
+          // Render 2x2 grid
+          return (
+            <div class="departments-section fade-in" style="display: flex; justify-content: center; gap: 32px;">
+              {/* Brain 1 */}
+              <div class="department-column">
+                <h3>Brain</h3>
+                <ul>
+                  {brain1.map((name: string, i: number) => name ? <li>{name}</li> : <li style="visibility:hidden">&nbsp;</li>)}
+                </ul>
+              </div>
+              {/* Brain 2 */}
+              <div class="department-column">
+                <h3>Brain</h3>
+                <ul>
+                  {brain2.map((name: string, i: number) => name ? <li>{name}</li> : <li style="visibility:hidden">&nbsp;</li>)}
+                </ul>
+              </div>
+              {/* Canvas 1 */}
+              <div class="department-column">
+                <h3>Canvas</h3>
+                <ul>
+                  {canvas1.map((name: string, i: number) => name ? <li>{name}</li> : <li style="visibility:hidden">&nbsp;</li>)}
+                </ul>
+              </div>
+              {/* Canvas 2 */}
+              <div class="department-column">
+                <h3>Canvas</h3>
+                <ul>
+                  {canvas2.map((name: string, i: number) => name ? <li>{name}</li> : <li style="visibility:hidden">&nbsp;</li>)}
+                </ul>
+              </div>
+            </div>
+          );
+        })()}
       </div>
     </section>
   </main>

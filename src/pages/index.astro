@@ -10,11 +10,58 @@ import '@fontsource/poppins/500.css';
 import '@fontsource/poppins/600.css';
 import '@fontsource/poppins/700.css';
 import '@fontsource-variable/advent-pro';
+
+// Enhanced SEO schema for homepage
+const homepageSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Aries - AI Society of IIT Delhi",
+  "alternateName": "Aries AI Society",
+  "url": "https://ariesiitd.com",
+  "logo": "https://ariesiitd.com/arieslogo.svg",
+  "description": "Aries is the premier AI and Machine Learning society of IIT Delhi, fostering innovation and research in artificial intelligence through events, projects, and community building.",
+  "foundingDate": "2023",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New Delhi",
+    "addressRegion": "Delhi",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "general",
+    "areaServed": "IN",
+    "availableLanguage": "English"
+  },
+  "sameAs": [
+    "https://github.com/aries-iitd",
+    "https://www.linkedin.com/company/aries-artificial-intelligence-society-iitd",
+    "https://github.com/Aries-IITD",
+    "https://instagram.com/aries.iitd",
+    "https://www.ariesiitd.in"
+  ],
+  "parentOrganization": {
+    "@type": "CollegeOrUniversity",
+    "name": "Indian Institute of Technology Delhi",
+    "url": "https://iitd.ac.in"
+  }
+};
 ---
 
-<Layout title="Aries - The AI Society of IIT Delhi" description="Aries is the AI Society of IIT Delhi, a community of students and professionals passionate about AI and ML">
+<Layout 
+  title="Aries - The Premier AI Society of IIT Delhi | Machine Learning & Innovation" 
+  description="Join Aries, IIT Delhi's leading AI and Machine Learning society. Explore cutting-edge projects, attend expert workshops, and connect with fellow AI enthusiasts. Transform your passion for artificial intelligence into real-world impact."
+  keywords="Aries IIT Delhi, AI society, machine learning, artificial intelligence, IIT Delhi, tech society, AI projects, ML workshops, data science, computer vision, NLP, deep learning, AI research, student organization"
+  image="/arieslogo.svg"
+  imageAlt="Aries AI Society Logo - The premier AI community at IIT Delhi"
+  type="website"
+  schema={homepageSchema}
+>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <Navigation client:load />
-  <HeroSection client:load />
-  <FeaturesSection client:load />
-  <FeaturedProjects client:load />
+  <main id="main-content">
+    <HeroSection client:load />
+    <FeaturesSection client:load />
+    <FeaturedProjects client:load />
+  </main>
 </Layout>

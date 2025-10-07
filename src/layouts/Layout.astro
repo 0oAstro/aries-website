@@ -1,12 +1,27 @@
 ---
 import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 
 export interface Props {
   title: string;
   description?: string;
+  image?: string;
+  imageAlt?: string;
+  type?: 'website' | 'article';
+  keywords?: string;
+  schema?: object;
 }
 
-const { title, description = "Aries - The Artificial Intelligence Society of IIT Delhi" } = Astro.props;
+const { 
+  title, 
+  description = "Aries is the premier AI and Machine Learning society of IIT Delhi, fostering innovation and research in artificial intelligence.",
+  image,
+  imageAlt,
+  type = 'website',
+  keywords,
+  schema
+} = Astro.props;
 
 import Analytics from '@vercel/analytics/astro'
 ---
@@ -15,28 +30,103 @@ import Analytics from '@vercel/analytics/astro'
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="C1ZV2tGGkWUtf85lnC7YbPN10leLKAd5o3EhDYfryvg" />
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="alternate icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- SEO Component -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <SEO 
+      title={title}
+      description={description}
+      image={image}
+      imageAlt={imageAlt}
+      type={type}
+      keywords={keywords}
+      schema={schema}
+    />
+    
+    <!-- Font Loading -->
+    <link rel="preload" href="/fonts/poppins.woff2" as="font" type="font/woff2" crossorigin />
+    
+    <!-- Critical CSS -->
+    <style>
+      /* Critical above-the-fold styles */
+      body {
+        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #000000;
+        color: #ffffff;
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+      
+      /* Reduce layout shift */
+      main {
+        min-height: 100vh;
+      }
+    </style>
   </head>
   <body class="bg-black text-white min-h-screen">
-    <Analytics />
     <main class="relative">
       <slot />
     </main>
-    <Footer />
+    <div class="relative z-30">
+      <Footer />
+    </div>
+    <SpeedInsights />
+    <Analytics />
   </body>
 </html>
 
 <style is:global>
   html {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    scroll-behavior: smooth;
   }
   
   body {
     margin: 0;
     padding: 0;
+  }
+  
+  /* Improve image loading */
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+  
+  /* Focus styles for accessibility */
+  :focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+  
+  /* Skip to content link for screen readers */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #3b82f6;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    transition: top 0.3s;
+    z-index: 1000;
+  }
+  
+  .skip-link:focus {
+    top: 6px;
   }
 </style> 
