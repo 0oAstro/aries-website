@@ -151,7 +151,7 @@ export const FeaturesSection = () => {
                       <CardContent className="p-8 h-full flex flex-col">
                         <div className="space-y-5 flex-1">
                           <div className={`h-2 w-full ${bgColor}`} />
-                          <h4 className="text-2xl font-black uppercase text-foreground tracking-tight border-l-8 ${borderColor} pl-4">
+                          <h4 className={`text-2xl font-black uppercase text-foreground tracking-tight border-l-8 ${borderColor} pl-4`}>
                             {feature.title}
                           </h4>
                           <p className="font-bold leading-relaxed uppercase text-sm tracking-tight">

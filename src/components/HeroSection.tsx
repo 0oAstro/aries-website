@@ -22,7 +22,7 @@ export const HeroSection = () => {
   return (
     <div className="relative w-full min-h-screen bg-background overflow-hidden">
       {/* Brutal Grid Background */}
-      <div className="absolute inset-0 bg-grid opacity-20" />
+      <div className="absolute inset-0 bg-grid opacity-30" />
 
       {/* Floating geometric shapes */}
       <div
@@ -111,12 +111,12 @@ export const HeroSection = () => {
                   </div>
 
                   {/* Main logo container */}
-                  <div className="relative border-brutal-thicc shadow-brutal-xl bg-accent/10 p-8 md:p-12 hover-lift transition-all duration-300">
+                  <div className="relative border-brutal-thicc shadow-brutal-xl bg-foreground p-8 md:p-12 hover-lift transition-all duration-300">
                     <div className="aspect-square relative">
                       <img
                         src="/arieslogo.svg"
                         alt="Aries Spirit Animal"
-                        className="relative w-full h-full object-contain drop-shadow-2xl"
+                        className="relative w-full h-full object-contain invert"
                       />
                       {/* Accent lines */}
                       <div className="absolute top-0 right-0 w-full h-2 bg-primary" />

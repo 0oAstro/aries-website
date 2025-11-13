@@ -42,8 +42,8 @@ export const Navigation = () => {
               href="/"
               className="flex items-center gap-3 hover-lift transition-transform"
             >
-              <div className="w-12 h-12 bg-primary border-brutal flex items-center justify-center p-2">
-                <img src="/arieslogo.svg" alt="Aries Logo" className="w-full h-full" />
+              <div className="w-12 h-12 bg-foreground border-brutal shadow-brutal flex items-center justify-center p-2">
+                <img src="/arieslogo.svg" alt="Aries Logo" className="w-full h-full invert" />
               </div>
               <span className="font-black text-2xl uppercase tracking-tighter text-foreground">
                 ARIES
