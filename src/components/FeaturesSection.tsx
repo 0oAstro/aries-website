@@ -1,203 +1,183 @@
 "use client";
 
 import React from "react";
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
-import { 
-  IconCode, 
-  IconBrain, 
-  IconUsers, 
-  IconTrophy,
-  IconCalendarEvent,
-  IconRocket,
-  IconBulb
-} from "@tabler/icons-react";
-import { ShootingStars } from "@/components/ui/shooting-stars";
-import { StarsBackground } from "@/components/ui/stars-background";
-import { LampContainer } from "@/components/ui/lamp";
-import { buttonVariants } from '@/components/ui/button';
-import { motion } from "motion/react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Brain, Code2, Users, Calendar, Lightbulb, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const features = [
   {
     title: "AI Research & Development",
     description: "Cutting-edge research in machine learning, deep learning, and artificial intelligence applications.",
-    header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-600/20 border border-purple-500/30 items-center justify-center">
-      <IconBrain className="h-8 w-8 text-purple-400" />
-    </div>,
-    className: "md:col-span-1",
-    icon: <IconBrain className="h-4 w-4" style={{ color: 'rgb(106,58,196)' }} />,
+    icon: Brain,
   },
   {
-    title: "Technical Workshops & Innovation Challenges",
-    description: "Hands-on workshops covering the latest AI tools, frameworks, and technologies. Regular hackathons and coding competitions to push the boundaries of AI innovation.",
-    header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-purple-600/25 to-purple-700/25 border border-purple-400/40 items-center justify-center">
-      <IconCode className="h-8 w-8 text-purple-300" />
-    </div>,
-    className: "md:col-span-3",
-    icon: <IconCode className="h-4 w-4" style={{ color: 'rgb(106,58,196)' }} />,
+    title: "Technical Workshops",
+    description: "Hands-on workshops covering the latest AI tools, frameworks, and technologies.",
+    icon: Code2,
   },
   {
-    title: "Community Building & Industry Connections",
-    description: "Building a strong community of AI enthusiasts, researchers, and innovators. Guest lectures, industry visits, and networking opportunities with AI professionals.",
-    header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-purple-600/25 to-purple-700/25 border border-purple-400/40 items-center justify-center">
-      <IconUsers className="h-8 w-8 text-purple-300" />
-    </div>,
-    className: "md:col-span-3",
-    icon: <IconUsers className="h-4 w-4" style={{ color: 'rgb(106,58,196)' }} />,
+    title: "Innovation Challenges",
+    description: "Regular hackathons and coding competitions to push the boundaries of AI innovation.",
+    icon: Lightbulb,
+  },
+  {
+    title: "Community Building",
+    description: "Building a strong community of AI enthusiasts, researchers, and innovators.",
+    icon: Users,
+  },
+  {
+    title: "Industry Connections",
+    description: "Guest lectures, industry visits, and networking opportunities with AI professionals.",
+    icon: ArrowRight,
   },
   {
     title: "Regular Events",
     description: "Weekly meetups, tech talks, and collaborative project sessions.",
-    header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 border border-pink-500/30 items-center justify-center">
-      <IconCalendarEvent className="h-8 w-8 text-pink-400" />
-    </div>,
-    className: "md:col-span-1",
-    icon: <IconCalendarEvent className="h-4 w-4" style={{ color: 'rgb(233,123,177)' }} />,
+    icon: Calendar,
   },
 ];
 
 export const FeaturesSection = () => {
   return (
-    <div className="relative w-full bg-black py-20 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 w-full h-full z-0">
-        <ShootingStars 
-          minSpeed={8}
-          maxSpeed={25}
-          minDelay={2000}
-          maxDelay={6000}
-          starColor="rgb(106,58,196)"
-          trailColor="rgb(233,123,177)"
-        />
-        <StarsBackground starDensity={0.0001} />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Introduction Section */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent mb-6">
-            Artificial Intelligence, Machine Learning and everything in between
-          </h2>
-          <p className="text-lg text-neutral-300 max-w-4xl mx-auto mb-12">
-            ARIES is IIT Delhi's student-led community that brings together curious minds to learn, build, and explore intelligent systems.
-          </p>
-          
-          <h3 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent mb-4">
-            Not just another club
-          </h3>
-          <p className="text-lg text-neutral-300 max-w-4xl mx-auto">
-            ARIES is a space where ideas turn into research, research turns into products, and people grow into innovators.
-          </p>
-        </div>
-
-        {/* Lamp Effect with What We Do Section */}
-        <div className="relative">
-          <LampContainer 
-            className="relative flex min-h-[30rem] flex-col items-center justify-center overflow-hidden bg-transparent w-full rounded-md z-0"
-          >
-            <motion.h3
-              initial={{ opacity: 0.5, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.3,
-                duration: 0.8,
-                ease: "easeInOut",
-              }}
-              className="mt-8 bg-gradient-to-br from-white to-purple-300 py-4 bg-clip-text text-center text-3xl md:text-4xl font-bold tracking-tight text-transparent"
-            >
-              What we do
-            </motion.h3>
-          </LampContainer>
-        </div>
-
-        {/* What We Do Section */}
-        <div className="mb-16 -mt-32 relative z-20">
-          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 md:auto-rows-[20rem] md:grid-cols-4">
-            {features.map((item, i) => (
-              <BentoGridItem
-                key={i}
-                title={item.title}
-                description={item.description}
-                header={item.header}
-                className={item.className}
-                icon={item.icon}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Action Items Section */}
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Powerful Projects */}
-          <div className="bg-gradient-to-br from-purple-900/25 to-purple-800/20 border border-purple-500/40 rounded-xl p-8 hover:border-purple-400 transition-all duration-300">
-            <div className="flex items-center mb-6">
-              <IconBulb className="h-8 w-8 mr-4" style={{ color: 'rgb(106,58,196)' }} />
-              <h4 className="text-2xl font-bold text-white">Powerful Projects</h4>
-            </div>
-            <p className="text-neutral-300 mb-6 leading-relaxed">
-              Code that does more than compile - our projects turn curiosity into prototypes, and ideas into impact. 
-              From neural networks to robotics, we build solutions that matter.
+    <section className="relative w-full bg-background py-24 md:py-32 lg:py-40">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center space-y-6 mb-20 md:mb-28">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-foreground">
+              Artificial Intelligence,
+              <br />
+              <span className="font-semibold">Machine Learning</span>
+              <br />
+              <span className="text-muted-foreground">and everything in between</span>
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              ARIES is IIT Delhi's student-led community that brings together curious minds to learn, build, and explore intelligent systems.
             </p>
-            <div>
-              <a 
-                href="/projects" 
-                style={{ background: 'linear-gradient(to bottom, rgb(106,58,196), rgb(85,46,157))' }}
-                className="inline-flex items-center px-6 py-3 rounded-md text-white font-medium hover:-translate-y-1 transition-all duration-300 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]"
-              >
-                View Projects
-              </a>
-            </div>
           </div>
 
-          {/* Exciting Events */}
-          <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/15 border border-purple-500/30 rounded-xl p-8 hover:border-purple-400 transition-all duration-300">
-            <div className="flex items-center mb-6">
-              <IconCalendarEvent className="h-8 w-8 mr-4" style={{ color: 'rgb(233,123,177)' }} />
-              <h4 className="text-2xl font-bold text-white">Exciting Events</h4>
-            </div>
-            <p className="text-neutral-300 mb-6 leading-relaxed">
-              From caffeine-fueled hackathons to talks that actually stick, our events are designed to challenge, 
-              connect and leave a mark on your AI journey.
+          {/* Not Just Another Club */}
+          <div className="text-center mb-20 md:mb-28 py-16 border-y border-border">
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">
+              Not just <span className="font-semibold text-accent">another club</span>
+            </h3>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              ARIES is a space where ideas turn into research, research turns into products, and people grow into innovators.
             </p>
-            <div>
-              <a 
-                href="/events" 
-                style={{ background: 'linear-gradient(to bottom, rgb(233,123,177), rgb(219,112,165))' }}
-                className="inline-flex items-center px-6 py-3 rounded-md text-white font-medium hover:-translate-y-1 transition-all duration-300 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]"
-              >
-                View Events
-              </a>
+          </div>
+
+          {/* What We Do */}
+          <div className="mb-20 md:mb-28">
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-light text-center mb-16 text-foreground">
+              What <span className="font-semibold">we do</span>
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {features.map((feature, idx) => {
+                const Icon = feature.icon;
+                return (
+                  <Card key={idx} className="group hover:shadow-lg transition-all duration-300 border-border/50 hover:border-accent/50">
+                    <CardContent className="p-8">
+                      <div className="space-y-4">
+                        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                          <Icon className="w-6 h-6 text-accent" />
+                        </div>
+                        <h4 className="text-xl font-semibold text-foreground">
+                          {feature.title}
+                        </h4>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {feature.description}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </div>
-        </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <h3 className="text-2xl font-bold text-white mb-4">
-            Ready to join the AI revolution?
-          </h3>
-          <p className="text-neutral-300 mb-8 max-w-2xl mx-auto">
-            Whether you're a beginner or an expert, there's a place for you in our community. 
-            Let's build the future of AI together.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
-              href="https://chat.whatsapp.com/D98xdCtosjr2d8wchQJSvL"
-              style={{ background: 'linear-gradient(to bottom, rgb(106,58,196), rgb(85,46,157))' }}
-              className="px-8 py-4 rounded-md text-white text-lg font-bold relative cursor-pointer hover:-translate-y-1 transition duration-300 inline-block text-center shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]"
-            >
-              Join ARIES
-            </a>
-            <a
-              href="/events"
-              className="px-8 py-4 rounded-md border text-white text-lg font-medium relative cursor-pointer hover:-translate-y-1 transition duration-300 inline-block text-center hover:border-purple-400"
-              style={{ borderColor: 'rgb(106,58,196)' }}
-            >
-              Upcoming Events
-            </a>
+          {/* Action Cards */}
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-20 md:mb-28">
+            {/* Projects Card */}
+            <Card className="group hover:shadow-lg transition-all duration-300 border-border/50 hover:border-accent/50">
+              <CardContent className="p-10 md:p-12">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-accent/10">
+                      <Lightbulb className="w-7 h-7 text-accent" />
+                    </div>
+                    <h4 className="text-2xl md:text-3xl font-semibold text-foreground">
+                      Powerful Projects
+                    </h4>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed text-lg">
+                    Code that does more than compile - our projects turn curiosity into prototypes, and ideas into impact.
+                    From neural networks to robotics, we build solutions that matter.
+                  </p>
+                  <Button variant="outline" className="group/btn" onClick={() => window.location.href = '/projects'}>
+                    View Projects
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Events Card */}
+            <Card className="group hover:shadow-lg transition-all duration-300 border-border/50 hover:border-accent/50">
+              <CardContent className="p-10 md:p-12">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-accent/10">
+                      <Calendar className="w-7 h-7 text-accent" />
+                    </div>
+                    <h4 className="text-2xl md:text-3xl font-semibold text-foreground">
+                      Exciting Events
+                    </h4>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed text-lg">
+                    From caffeine-fueled hackathons to talks that actually stick, our events are designed to challenge,
+                    connect and leave a mark on your AI journey.
+                  </p>
+                  <Button variant="outline" className="group/btn" onClick={() => window.location.href = '/events'}>
+                    View Events
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Final CTA */}
+          <div className="text-center py-16 border-t border-border">
+            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
+              Ready to join the AI revolution?
+            </h3>
+            <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+              Whether you're a beginner or an expert, there's a place for you in our community.
+              Let's build the future of AI together.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                size="lg"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground px-8"
+                onClick={() => window.open('https://chat.whatsapp.com/D98xdCtosjr2d8wchQJSvL', '_blank')}
+              >
+                Join ARIES
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="px-8"
+                onClick={() => window.location.href = '/events'}
+              >
+                Upcoming Events
+              </Button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-}; 
+};

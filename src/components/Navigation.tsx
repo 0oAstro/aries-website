@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Mail } from "lucide-react";
 import {
   Navbar,
   NavBody,
@@ -21,13 +22,12 @@ const AriesLogo = () => {
   return (
     <a
       href="/"
-      className="relative z-20 mr-4 flex items-center space-x-3 px-2 py-1 text-sm font-normal text-white"
+      className="relative z-20 mr-4 flex items-center space-x-3 px-2 py-1 text-sm font-normal text-foreground dark:text-white transition-colors"
     >
-      {/* Temporary AI-themed icon until logo is provided */}
-      <div className="w-8 h-8 rounded-full ring-2 ring-blue-500 flex items-center justify-center bg-white">
-        <img src="/arieslogo.svg" alt="Aries Logo" className="w-6 h-6" />
+      <div className="w-8 h-8 flex items-center justify-center">
+        <img src="/arieslogo.svg" alt="Aries Logo" className="w-8 h-8" />
       </div>
-      <span className="font-bold text-xl text-white">
+      <span className="font-semibold text-xl tracking-tight">
         ARIES
       </span>
     </a>
@@ -37,7 +37,7 @@ const AriesLogo = () => {
 function scrollToBottom() {
   window.scrollTo({
     top: document.body.scrollHeight,
-    behavior: 'smooth' // Optional: for smooth scrolling
+    behavior: 'smooth'
   })
 }
 
@@ -45,9 +45,10 @@ const ContactButton = () => {
   return (
     <button
       onClick={scrollToBottom}
-      className="px-6 py-2 rounded-md bg-gradient-to-b from-indigo-500 to-indigo-700 text-white text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]"
+      className="px-5 py-2.5 rounded-md bg-accent hover:bg-accent/90 text-accent-foreground text-sm font-medium cursor-pointer transition-all duration-200 inline-flex items-center gap-2"
     >
-      Contact Us
+      <Mail className="w-4 h-4" />
+      Contact
     </button>
   );
 };
@@ -90,15 +91,15 @@ export const Navigation = () => {
                 href={item.link}
                 className={`transition-colors ${
                   isActivePage(item.link)
-                    ? 'text-indigo-600 dark:text-indigo-400 font-semibold'
-                    : 'text-neutral-600 dark:text-neutral-300 hover:text-neutral-800 dark:hover:text-neutral-100'
+                    ? 'text-accent font-semibold'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
               </a>
             ))}
-            <div className="pt-4 border-t border-neutral-200 dark:border-neutral-800">
+            <div className="pt-4 border-t border-border">
               <ContactButton />
             </div>
           </div>

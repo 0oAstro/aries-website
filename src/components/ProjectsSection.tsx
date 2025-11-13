@@ -1,14 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { WobbleCard } from "@/components/ui/wobble-card";
-import { HoverEffect } from "@/components/ui/card-hover-effect";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { IconSearch, IconBrandGithub, IconExternalLink, IconCode } from "@tabler/icons-react";
-import { ShootingStars } from "@/components/ui/shooting-stars";
-import { StarsBackground } from "@/components/ui/stars-background";
+import { Button } from "@/components/ui/button";
+import { Search, Github, ExternalLink, Code2, Star } from "lucide-react";
 
 const projects = [
   {
@@ -16,19 +13,19 @@ const projects = [
     description: "A Replica of the TARS robot from Interstellar, produced by ARIES team in a showcase visit to Japanese Students.",
     link: "#",
     github: "#",
-    category: "Natural Language Processing",
-    techStack: ["Python", "NLTK", "Flask", "MongoDB"],
+    category: "Robotics",
+    techStack: ["Python", "ROS", "Computer Vision", "Hardware"],
     featured: true,
     image: '/projects/tars.png',
     team: []
   },
   {
     title: "ML project for military",
-    description: "empowering our guarding angels with latest technology , the youth of this country contributes to its developement , here at ARIES.",
+    description: "empowering our guarding angels with latest technology, the youth of this country contributes to its development, here at ARIES.",
     link: "#",
     github: "#",
-    category: "Healthcare",
-    techStack: ["Python", "Keras", "Medical Imaging", "CNN"],
+    category: "Defense",
+    techStack: ["Python", "TensorFlow", "Computer Vision", "Security"],
     featured: false,
     image: '/projects/military.png',
     team: []
@@ -72,90 +69,14 @@ const projects = [
     link: "#",
     github: "#",
     category: "Computer Vision",
-    techStack: ["Python", "OpenCV", "FaceNet", "SQLite"],
+    techStack: ["Python", "OpenCV", "GANs", "Deep Learning"],
     featured: false,
     image: '/projects/tresswap.png',
     team: []
   }
 ];
 
-const categories = ["All", "Computer Vision", "Natural Language Processing", "Robotics", "Healthcare", "IoT", "Finance"];
-
-const ProjectCardWithHover = ({ project, index }: { project: typeof projects[0], index: number }) => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  return (
-    <div 
-      className="relative group block p-2 h-full w-full"
-      onMouseEnter={() => setHoveredIndex(index)}
-      onMouseLeave={() => setHoveredIndex(null)}
-    >
-      {hoveredIndex === index && (
-        <div className="absolute inset-0 h-full w-full bg-gradient-to-br from-purple-600/20 to-pink-600/20 block rounded-3xl animate-pulse" />
-      )}
-      
-      <div className="bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-xl border border-neutral-700 p-6 hover:border-purple-500 transition-all duration-300 hover:scale-105 relative z-20">
-        <div className="aspect-video mb-4 rounded-lg overflow-hidden bg-neutral-800">
-          <img 
-            src={project.image} 
-            alt={project.title}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        
-        <div className="flex justify-between items-start mb-3">
-          <Badge variant="secondary" style={{ backgroundColor: 'rgb(106,58,196)' }} className="text-white border-none">
-            {project.category}
-          </Badge>
-          {project.featured && (
-            <Badge style={{ backgroundColor: 'rgb(233,123,177)' }} className="text-white border-none">Featured</Badge>
-          )}
-        </div>
-        
-        <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
-        <p className="text-neutral-300 mb-4 line-clamp-3">{project.description}</p>
-        
-        <div className="mb-4">
-          <p className="text-sm text-neutral-400 mb-2">Tech Stack:</p>
-          <div className="flex flex-wrap gap-2">
-            {project.techStack.map((tech, idx) => (
-              <Badge 
-                key={idx} 
-                variant="outline" 
-                className="text-xs border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white transition-colors"
-              >
-                {tech}
-              </Badge>
-            ))}
-          </div>
-        </div>
-        
-        <div className="mb-4">
-          <p className="text-sm text-neutral-400 mb-1">Team:</p>
-          <p className="text-sm text-neutral-300">{project.team.join(", ")}</p>
-        </div>
-        
-        <div className="flex space-x-3">
-          <a
-            href={project.github}
-            className="flex-1 flex items-center justify-center px-3 py-2 bg-neutral-700 hover:bg-neutral-600 text-white rounded-md transition-colors text-sm"
-          >
-            <IconBrandGithub className="w-4 h-4 mr-2" />
-            Code
-          </a>
-          <a
-            href={project.link}
-            style={{ backgroundColor: 'rgb(106,58,196)' }}
-            className="flex-1 flex items-center justify-center px-3 py-2 hover:opacity-80 text-white rounded-md transition-all text-sm"
-          >
-            <IconExternalLink className="w-4 h-4 mr-2" />
-            Demo
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-};
+const categories = ["All", "Computer Vision", "Natural Language Processing", "Robotics", "Defense", "IoT", "Finance"];
 
 export const ProjectsSection = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -165,212 +86,231 @@ export const ProjectsSection = () => {
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          project.techStack.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()));
-    
+
     const matchesCategory = selectedCategory === "All" || project.category === selectedCategory;
-    
+
     return matchesSearch && matchesCategory;
   });
 
   const featuredProjects = projects.filter(project => project.featured);
 
   return (
-    <div className="relative w-full bg-black min-h-screen pt-24">
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Stars Background - Only on main content */}
-        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-          <StarsBackground 
-            starDensity={0.0005}
-            allStarsTwinkle={true}
-            twinkleProbability={0.8}
-            minTwinkleSpeed={0.5}
-            maxTwinkleSpeed={1.5}
-            className="absolute inset-0"
-          />
-          <ShootingStars 
-            minSpeed={15}
-            maxSpeed={35}
-            minDelay={800}
-            maxDelay={3000}
-            starColor="#9E00FF"
-            trailColor="#2EB9DF"
-            starWidth={12}
-            starHeight={2}
-            className="absolute inset-0"
-          />
-        </div>
-        
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-8">
-            AI Projects Showcase
-          </h1>
-          <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
-            Explore the innovative AI projects built by our talented members. From computer vision to NLP, discover the cutting-edge solutions we're developing.
-          </p>
-        </div>
+    <div className="relative w-full bg-background min-h-screen pt-24 pb-20">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16 space-y-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-foreground">
+              AI Projects <span className="font-semibold">Showcase</span>
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Explore the innovative AI projects built by our talented members. From computer vision to NLP, discover the cutting-edge solutions we're developing.
+            </p>
+          </div>
 
-        {/* Featured Projects */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-white text-center mb-12">Featured Projects</h2>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
-            <div style={{ backgroundColor: 'rgb(106,58,196)' }} className="rounded-xl">
-              <WobbleCard
-                containerClassName="col-span-1 lg:col-span-2 h-full bg-transparent min-h-[500px] lg:min-h-[300px]"
-              >
-                <div className="max-w-xs">
-                  <h2 className="text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                    {featuredProjects[0]?.title}
-                  </h2>
-                  <p className="mt-4 text-left text-base/6 text-neutral-200">
-                    {featuredProjects[0]?.description}
-                  </p>
-                </div>
-              </WobbleCard>
+          {/* Featured Projects */}
+          <div className="mb-20">
+            <div className="flex items-center justify-center gap-2 mb-12">
+              <Star className="w-6 h-6 text-accent" />
+              <h2 className="text-3xl md:text-4xl font-light text-foreground">
+                <span className="font-semibold">Featured</span> Projects
+              </h2>
             </div>
 
-            <div style={{ backgroundColor: 'rgb(106,58,196)' }} className="rounded-xl">
-              <WobbleCard 
-                containerClassName="col-span-1 min-h-[300px] bg-transparent"
-              >
-                <h2 className="max-w-80 text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                  {featuredProjects[1]?.title}
-                </h2>
-                <p className="mt-4 max-w-[26rem] text-left text-base/6 text-neutral-200">
-                  {featuredProjects[1]?.description}
-                </p>
-              </WobbleCard>
-            </div>
-
-            <div style={{ backgroundColor: 'rgb(106,58,196)' }} className="rounded-xl">
-              <WobbleCard 
-                containerClassName="col-span-1 lg:col-span-3 min-h-[500px] lg:min-h-[600px] xl:min-h-[300px] bg-transparent"
-              >
-                <div className="max-w-sm">
-                  <h2 className="max-w-sm md:max-w-lg text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                    {featuredProjects[2]?.title}
-                  </h2>
-                  <p className="mt-4 max-w-[26rem] text-left text-base/6 text-neutral-200">
-                    {featuredProjects[2]?.description}
-                  </p>
-                </div>
-              </WobbleCard>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+              {featuredProjects.map((project, idx) => (
+                <Card key={idx} className="group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-accent/50 overflow-hidden">
+                  <div className="aspect-video overflow-hidden bg-muted">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <CardHeader className="space-y-4">
+                    <div className="flex items-start justify-between">
+                      <Badge variant="secondary" className="text-xs">
+                        {project.category}
+                      </Badge>
+                      <Badge variant="outline" className="text-xs gap-1">
+                        <Star className="w-3 h-3 fill-current" />
+                        Featured
+                      </Badge>
+                    </div>
+                    <CardTitle className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors">
+                      {project.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <CardDescription className="text-muted-foreground leading-relaxed line-clamp-3">
+                      {project.description}
+                    </CardDescription>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.slice(0, 3).map((tech, techIdx) => (
+                        <Badge key={techIdx} variant="outline" className="text-xs font-normal">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* Search and Filter */}
-        <div className="mb-12">
-          <div className="flex flex-col md:flex-row gap-4 mb-8">
-            {/* Search */}
-            <div className="flex-1">
-              <div className="relative">
-                <IconSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-neutral-400" />
-                <Input
-                  type="text"
-                  placeholder="Search projects, technologies..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-400"
-                />
+          {/* Search and Filter */}
+          <div className="mb-12 space-y-6">
+            <div className="relative max-w-xl mx-auto">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <Input
+                type="text"
+                placeholder="Search projects, technologies..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-12 h-12"
+              />
+            </div>
+
+            {/* Category Filters */}
+            <div className="flex flex-wrap justify-center gap-2">
+              {categories.map((category) => (
+                <Button
+                  key={category}
+                  variant={selectedCategory === category ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setSelectedCategory(category)}
+                  className={selectedCategory === category ? "bg-accent hover:bg-accent/90" : ""}
+                >
+                  {category}
+                </Button>
+              ))}
+            </div>
+          </div>
+
+          {/* All Projects */}
+          <div className="mb-16">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-2xl md:text-3xl font-light text-foreground">
+                All Projects <span className="text-muted-foreground">({filteredProjects.length})</span>
+              </h2>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Code2 className="w-5 h-5" />
+                <span className="text-sm">Open Source</span>
+              </div>
+            </div>
+
+            {filteredProjects.length > 0 ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {filteredProjects.map((project, idx) => (
+                  <Card key={idx} className="group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-accent/50 flex flex-col">
+                    <div className="aspect-video overflow-hidden bg-muted">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <CardHeader className="space-y-4">
+                      <div className="flex items-start justify-between">
+                        <Badge variant="secondary" className="text-xs">
+                          {project.category}
+                        </Badge>
+                        <div className="flex gap-2">
+                          <a
+                            href={project.github}
+                            className="inline-flex items-center justify-center w-8 h-8 rounded-md border border-border hover:border-accent hover:bg-accent/10 transition-colors"
+                            aria-label="View on GitHub"
+                          >
+                            <Github className="w-4 h-4" />
+                          </a>
+                          <a
+                            href={project.link}
+                            className="inline-flex items-center justify-center w-8 h-8 rounded-md border border-border hover:border-accent hover:bg-accent/10 transition-colors"
+                            aria-label="View demo"
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
+                        </div>
+                      </div>
+                      <CardTitle className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors">
+                        {project.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-1 space-y-4">
+                      <CardDescription className="text-muted-foreground leading-relaxed line-clamp-3">
+                        {project.description}
+                      </CardDescription>
+                      <div className="flex flex-wrap gap-2">
+                        {project.techStack.map((tech, techIdx) => (
+                          <Badge key={techIdx} variant="outline" className="text-xs font-normal">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-16">
+                <p className="text-muted-foreground text-lg">No projects found matching your criteria.</p>
+              </div>
+            )}
+          </div>
+
+          {/* Project Statistics */}
+          <div className="py-16 border-t border-border">
+            <h2 className="text-2xl md:text-3xl font-light text-center mb-12 text-foreground">
+              Project <span className="font-semibold">Impact</span>
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+              <div className="text-center space-y-2">
+                <div className="text-4xl md:text-5xl font-semibold text-accent">25+</div>
+                <div className="text-sm text-muted-foreground">Projects Completed</div>
+              </div>
+              <div className="text-center space-y-2">
+                <div className="text-4xl md:text-5xl font-semibold text-accent">8</div>
+                <div className="text-sm text-muted-foreground">Categories Covered</div>
+              </div>
+              <div className="text-center space-y-2">
+                <div className="text-4xl md:text-5xl font-semibold text-accent">15+</div>
+                <div className="text-sm text-muted-foreground">Technologies Used</div>
+              </div>
+              <div className="text-center space-y-2">
+                <div className="text-4xl md:text-5xl font-semibold text-accent">100%</div>
+                <div className="text-sm text-muted-foreground">Open Source</div>
               </div>
             </div>
           </div>
 
-          {/* Category Filters */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                  selectedCategory === category
-                    ? 'text-white border-none'
-                    : 'bg-neutral-800 text-neutral-300 hover:bg-neutral-700'
-                }`}
-                style={selectedCategory === category ? { backgroundColor: 'rgb(106,58,196)' } : {}}
+          {/* Call to Action */}
+          <div className="py-16 text-center border-t border-border">
+            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
+              Have a Project Idea?
+            </h3>
+            <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+              Join our community and collaborate on exciting AI projects. Whether you're a beginner or expert,
+              there's always room for innovation and learning.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                size="lg"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground"
+                onClick={() => window.open('https://chat.whatsapp.com/D98xdCtosjr2d8wchQJSvL', '_blank')}
               >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* All Projects */}
-        <div className="mb-20">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold text-white">
-              All Projects ({filteredProjects.length})
-            </h2>
-            <div className="flex items-center text-neutral-400">
-              <IconCode className="w-5 h-5 mr-2" />
-              <span>Open Source</span>
+                Get Involved
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => window.location.href = '/events'}
+              >
+                Join Workshop
+              </Button>
             </div>
-          </div>
-
-          {filteredProjects.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map((project, idx) => (
-                <ProjectCardWithHover key={idx} project={project} index={idx} />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16">
-              <p className="text-neutral-400 text-lg">No projects found matching your criteria.</p>
-            </div>
-          )}
-        </div>
-
-        {/* Project Statistics */}
-        <div className="py-16 border-t border-neutral-800">
-          <h2 className="text-2xl font-bold text-white text-center mb-8">Project Impact</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-400 mb-2">25+</div>
-              <div className="text-sm text-neutral-400">Projects Completed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-400 mb-2">8</div>
-              <div className="text-sm text-neutral-400">Categories Covered</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-400 mb-2">15+</div>
-              <div className="text-sm text-neutral-400">Technologies Used</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-400 mb-2">100%</div>
-              <div className="text-sm text-neutral-400">Open Source</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Call to Action */}
-        <div className="py-16 text-center">
-          <h3 className="text-2xl font-bold text-white mb-4">
-            Have a Project Idea?
-          </h3>
-          <p className="text-neutral-300 mb-8 max-w-2xl mx-auto">
-            Join our community and collaborate on exciting AI projects. Whether you're a beginner or expert, 
-            there's always room for innovation and learning.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
-              href="https://chat.whatsapp.com/D98xdCtosjr2d8wchQJSvL"
-              style={{ background: 'linear-gradient(to bottom, rgb(106,58,196), rgb(85,46,157))' }}
-              className="px-8 py-4 rounded-md text-white text-lg font-bold relative cursor-pointer hover:-translate-y-1 transition duration-300 inline-block text-center shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]"
-            >
-              Get Involved
-            </a>
-            <a
-              href="/events"
-              className="px-8 py-4 rounded-md border text-white text-lg font-medium relative cursor-pointer hover:-translate-y-1 transition duration-300 inline-block text-center hover:border-pink-400"
-              style={{ borderColor: 'rgb(233,123,177)' }}
-            >
-              Join Workshop
-            </a>
           </div>
         </div>
       </div>
     </div>
   );
-}; 
+};

@@ -1,12 +1,11 @@
 "use client";
 
 import React from "react";
-import { WobbleCard } from "@/components/ui/wobble-card";
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react";
+import { Button } from "@/components/ui/button";
+import { Github, ExternalLink, ArrowRight } from "lucide-react";
 
-// Synced featured projects data from ProjectsSection
 const featuredProjects = [
   {
     title: "Neural Style Transfer",
@@ -24,7 +23,7 @@ const featuredProjects = [
     link: "#",
     github: "#",
     category: "Natural Language Processing",
-    techStack: ["Python", "NLTL", "Flask", "MongoDB"],
+    techStack: ["Python", "NLTK", "Flask", "MongoDB"],
     image: "https://placehold.co/600x400.png",
     team: ["Rohit Kumar", "Sneha Patel"]
   },
@@ -42,176 +41,90 @@ const featuredProjects = [
 
 export const FeaturedProjects = () => {
   return (
-    <div className="relative w-full bg-black py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent mb-4">
-            Featured Projects
-          </h2>
-          <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
-            Discover the innovative AI projects built by our talented members at Aries.
-          </p>
-        </div>
+    <section className="relative w-full bg-secondary/30 py-24 md:py-32 lg:py-40">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center space-y-6 mb-16 md:mb-20">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-foreground">
+              Featured <span className="font-semibold">Projects</span>
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Discover the innovative AI projects built by our talented members at Aries.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
-          {/* First Project - Large Card */}
-          <WobbleCard
-            containerClassName="col-span-1 lg:col-span-2 h-full min-h-[500px] lg:min-h-[300px] bg-gradient-to-br from-purple-600 to-purple-800"
-          >
-            <div className="max-w-xs">
-              <Badge 
-                style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} 
-                className="text-white border-none mb-3"
-              >
-                {featuredProjects[0].category}
-              </Badge>
-              <h2 className="text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                {featuredProjects[0].title}
-              </h2>
-              <p className="mt-4 text-left text-base/6 text-neutral-200">
-                {featuredProjects[0].description}
-              </p>
-              <div className="mt-4 flex gap-2 flex-wrap">
-                {featuredProjects[0].techStack.slice(0, 3).map((tech, idx) => (
-                  <Badge 
-                    key={idx} 
-                    variant="outline" 
-                    className="text-xs border-white/30 text-white hover:bg-white/20 transition-colors"
-                  >
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-              <div className="mt-4 flex space-x-3">
-                <a
-                  href={featuredProjects[0].github}
-                  className="flex items-center px-3 py-2 bg-white/20 hover:bg-white/30 text-white rounded-md transition-colors text-sm"
-                >
-                  <IconBrandGithub className="w-4 h-4 mr-2" />
-                  Code
-                </a>
-                <a
-                  href={featuredProjects[0].link}
-                  className="flex items-center px-3 py-2 bg-white text-purple-600 hover:bg-gray-100 rounded-md transition-colors text-sm font-medium"
-                >
-                  <IconExternalLink className="w-4 h-4 mr-2" />
-                  Demo
-                </a>
-              </div>
-            </div>
-          </WobbleCard>
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+            {featuredProjects.map((project, idx) => (
+              <Card key={idx} className="group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-accent/50 flex flex-col">
+                <CardHeader className="space-y-4">
+                  <div className="flex items-start justify-between">
+                    <Badge variant="secondary" className="text-xs">
+                      {project.category}
+                    </Badge>
+                    <div className="flex gap-2">
+                      <a
+                        href={project.github}
+                        className="inline-flex items-center justify-center w-8 h-8 rounded-md border border-border hover:border-accent hover:bg-accent/10 transition-colors"
+                        aria-label="View on GitHub"
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                      <a
+                        href={project.link}
+                        className="inline-flex items-center justify-center w-8 h-8 rounded-md border border-border hover:border-accent hover:bg-accent/10 transition-colors"
+                        aria-label="View demo"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
 
-          {/* Second Project - Medium Card */}
-          <WobbleCard 
-            containerClassName="col-span-1 min-h-[300px] bg-gradient-to-br from-pink-600 to-pink-800"
-          >
-            <div>
-              <Badge 
-                style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} 
-                className="text-white border-none mb-3"
-              >
-                {featuredProjects[1].category}
-              </Badge>
-              <h2 className="max-w-80 text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                {featuredProjects[1].title}
-              </h2>
-              <p className="mt-4 max-w-[26rem] text-left text-base/6 text-neutral-200">
-                {featuredProjects[1].description}
-              </p>
-              <div className="mt-4 flex gap-2 flex-wrap">
-                {featuredProjects[1].techStack.slice(0, 3).map((tech, idx) => (
-                  <Badge 
-                    key={idx} 
-                    variant="outline" 
-                    className="text-xs border-white/30 text-white hover:bg-white/20 transition-colors"
-                  >
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-              <div className="mt-4 flex space-x-3">
-                <a
-                  href={featuredProjects[1].github}
-                  className="flex items-center px-3 py-2 bg-white/20 hover:bg-white/30 text-white rounded-md transition-colors text-sm"
-                >
-                  <IconBrandGithub className="w-4 h-4 mr-2" />
-                  Code
-                </a>
-                <a
-                  href={featuredProjects[1].link}
-                  className="flex items-center px-3 py-2 bg-white text-pink-600 hover:bg-gray-100 rounded-md transition-colors text-sm font-medium"
-                >
-                  <IconExternalLink className="w-4 h-4 mr-2" />
-                  Demo
-                </a>
-              </div>
-            </div>
-          </WobbleCard>
+                  <CardTitle className="text-2xl font-semibold text-foreground group-hover:text-accent transition-colors">
+                    {project.title}
+                  </CardTitle>
+                </CardHeader>
 
-          {/* Third Project - Wide Card */}
-          <WobbleCard 
-            containerClassName="col-span-1 lg:col-span-3 min-h-[500px] lg:min-h-[600px] xl:min-h-[300px] bg-gradient-to-br from-purple-700 to-purple-900"
-          >
-            <div className="max-w-sm">
-              <Badge 
-                style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} 
-                className="text-white border-none mb-3"
-              >
-                {featuredProjects[2].category}
-              </Badge>
-              <h2 className="max-w-sm md:max-w-lg text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                {featuredProjects[2].title}
-              </h2>
-              <p className="mt-4 max-w-[26rem] text-left text-base/6 text-neutral-200">
-                {featuredProjects[2].description}
-              </p>
-              <div className="mt-4 flex gap-2 flex-wrap">
-                {featuredProjects[2].techStack.slice(0, 4).map((tech, idx) => (
-                  <Badge 
-                    key={idx} 
-                    variant="outline" 
-                    className="text-xs border-white/30 text-white hover:bg-white/20 transition-colors"
-                  >
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-              <div className="mt-4 flex space-x-3">
-                <a
-                  href={featuredProjects[2].github}
-                  className="flex items-center px-3 py-2 bg-white/20 hover:bg-white/30 text-white rounded-md transition-colors text-sm"
-                >
-                  <IconBrandGithub className="w-4 h-4 mr-2" />
-                  Code
-                </a>
-                <a
-                  href={featuredProjects[2].link}
-                  className="flex items-center px-3 py-2 bg-white text-purple-600 hover:bg-gray-100 rounded-md transition-colors text-sm font-medium"
-                >
-                  <IconExternalLink className="w-4 h-4 mr-2" />
-                  Demo
-                </a>
-              </div>
-            </div>
-            {/* Decorative element for the wide card */}
-            <div className="absolute -right-10 md:-right-[40%] lg:-right-[20%] -bottom-10 opacity-30">
-              <div className="w-60 h-40 bg-gradient-to-br from-white/10 to-white/5 rounded-lg"></div>
-            </div>
-          </WobbleCard>
-        </div>
+                <CardContent className="flex-1 space-y-6">
+                  <CardDescription className="text-muted-foreground leading-relaxed">
+                    {project.description}
+                  </CardDescription>
 
-        {/* CTA */}
-        <div className="text-center mt-12">
-          <a
-            href="/projects"
-            style={{ background: 'linear-gradient(to bottom, rgb(106,58,196), rgb(85,46,157))' }}
-            className="px-8 py-4 rounded-md text-white text-lg font-bold relative cursor-pointer hover:-translate-y-1 transition duration-300 inline-block text-center shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]"
-          >
-            View All Projects
-          </a>
+                  <div className="space-y-4">
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.map((tech, techIdx) => (
+                        <Badge key={techIdx} variant="outline" className="text-xs font-normal">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+
+                    <div className="pt-4 border-t border-border">
+                      <p className="text-sm text-muted-foreground">
+                        <span className="font-medium">Team:</span> {project.team.join(", ")}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="text-center pt-8">
+            <Button
+              size="lg"
+              variant="outline"
+              className="group/btn"
+              onClick={() => window.location.href = '/projects'}
+            >
+              View All Projects
+              <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-}; 
+};

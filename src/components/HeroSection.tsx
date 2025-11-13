@@ -1,56 +1,84 @@
 "use client";
 
 import React from "react";
-import { ShootingStars } from "@/components/ui/shooting-stars";
-import { StarsBackground } from "@/components/ui/stars-background";
-import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-import { Spotlight } from "@/components/ui/spotlight";
-import { ReactSVG } from 'react-svg'
-
-const heroText = "Welcome to ARIES"
-const subText = "Where innovation meets intelligence. Join us in exploring the limitless possibilities of AI technology.";
+import { ArrowRight, Sparkles, Users, Rocket } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const HeroSection = () => {
   return (
-    <div className="min-h-screen relative w-full bg-black flex flex-col items-center justify-center overflow-hidden">
-      {/* Background Effects */}
-      <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
-        <ShootingStars 
-          minSpeed={10}
-          maxSpeed={30}
-          minDelay={1200}
-          maxDelay={4200}
-          starColor="rgb(106,58,196)"
-          trailColor="rgb(233,123,177)"
-        />
-        <StarsBackground starDensity={0.0005} />
-      </div>
-      
-      {/* Spotlight Effects */}
-      <Spotlight
-        className="-top-40 left-0 md:left-60 md:-top-20"
-        fill="white"
-      />
-      <Spotlight
-        className="top-10 left-full h-[80vh] w-[50vw]"
-        fill="rgb(106,58,196)"
-      />
-      <Spotlight
-        className="top-28 left-80 h-[80vh] w-[50vw]"
-        fill="rgb(233,123,177)"
-      />
+    <div className="relative w-full bg-background overflow-hidden">
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
 
-      {/* Content */}
-        <div className="relative z-10 flex flex-col lg:flex-row lg:space-x-8 items-center justify-center px-4 pt-20 md:pt-24">
-          <span className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 lg:mb-8 leading-tight bg-gradient-to-br from-white via-purple-200 to-pink-200 bg-clip-text text-transparent text-center lg:text-left">
-            Welcome
-            <br />
-            To
-            <br />
-            <span className="font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">ARIES</span>
-          </span>
-          <ReactSVG src="/arieslogo.svg" className="drop-shadow-xl drop-shadow-white/100 scale-50 sm:scale-60 lg:scale-75" width={10} height={10}/>  
+      {/* Hero Content */}
+      <div className="relative">
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12 pt-32 pb-24 md:pt-40 md:pb-32 lg:pt-48 lg:pb-40">
+          <div className="max-w-5xl mx-auto">
+            {/* Main Heading */}
+            <div className="text-center space-y-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-sm font-medium text-accent mb-4">
+                <Sparkles className="w-4 h-4" />
+                <span>IIT Delhi's Premier AI Society</span>
+              </div>
+
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight text-foreground">
+                Welcome to
+                <br />
+                <span className="font-semibold text-accent">ARIES</span>
+              </h1>
+
+              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
+                Where innovation meets intelligence. Exploring the limitless possibilities of artificial intelligence through research, collaboration, and community.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+                <Button
+                  size="lg"
+                  className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-6 text-base"
+                  onClick={() => window.open('https://chat.whatsapp.com/D98xdCtosjr2d8wchQJSvL', '_blank')}
+                >
+                  Join Our Community
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="px-8 py-6 text-base"
+                  onClick={() => window.location.href = '/projects'}
+                >
+                  Explore Projects
+                </Button>
+              </div>
+            </div>
+
+            {/* Stats Section */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12 mt-24 md:mt-32 pt-12 border-t border-border">
+              <div className="text-center space-y-2">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-4">
+                  <Users className="w-6 h-6 text-accent" />
+                </div>
+                <div className="text-3xl md:text-4xl font-semibold text-foreground">200+</div>
+                <div className="text-sm md:text-base text-muted-foreground">Active Members</div>
+              </div>
+              <div className="text-center space-y-2">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-4">
+                  <Rocket className="w-6 h-6 text-accent" />
+                </div>
+                <div className="text-3xl md:text-4xl font-semibold text-foreground">50+</div>
+                <div className="text-sm md:text-base text-muted-foreground">Projects Completed</div>
+              </div>
+              <div className="text-center space-y-2">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-4">
+                  <Sparkles className="w-6 h-6 text-accent" />
+                </div>
+                <div className="text-3xl md:text-4xl font-semibold text-foreground">100+</div>
+                <div className="text-sm md:text-base text-muted-foreground">Events Hosted</div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
   );
 }; 
