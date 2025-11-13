@@ -40,7 +40,7 @@ const features = [
 
 export const FeaturesSection = () => {
   return (
-    <section className="relative w-full bg-background py-24 md:py-32 lg:py-40">
+    <section className="relative w-full bg-background py-20 md:py-28 lg:py-36">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
@@ -77,13 +77,13 @@ export const FeaturesSection = () => {
               {features.map((feature, idx) => {
                 const Icon = feature.icon;
                 return (
-                  <Card key={idx} className="group hover:shadow-lg transition-all duration-300 border-border/50 hover:border-accent/50">
+                  <Card key={idx} className="group hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 border-border/50 hover:border-primary/30">
                     <CardContent className="p-8">
                       <div className="space-y-4">
-                        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 group-hover:bg-accent/20 transition-colors">
-                          <Icon className="w-6 h-6 text-accent" />
+                        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 group-hover:bg-primary/15 transition-colors">
+                          <Icon className="w-7 h-7 text-primary" />
                         </div>
-                        <h4 className="text-xl font-semibold text-foreground">
+                        <h4 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
                           {feature.title}
                         </h4>
                         <p className="text-muted-foreground leading-relaxed">
@@ -98,16 +98,16 @@ export const FeaturesSection = () => {
           </div>
 
           {/* Action Cards */}
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-20 md:mb-28">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-10 mb-20 md:mb-28">
             {/* Projects Card */}
-            <Card className="group hover:shadow-lg transition-all duration-300 border-border/50 hover:border-accent/50">
+            <Card className="group hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 border-border/50 hover:border-primary/30">
               <CardContent className="p-10 md:p-12">
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-accent/10">
-                      <Lightbulb className="w-7 h-7 text-accent" />
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 group-hover:bg-primary/15 transition-colors">
+                      <Lightbulb className="w-8 h-8 text-primary" />
                     </div>
-                    <h4 className="text-2xl md:text-3xl font-semibold text-foreground">
+                    <h4 className="text-2xl md:text-3xl font-semibold text-foreground group-hover:text-primary transition-colors">
                       Powerful Projects
                     </h4>
                   </div>
@@ -115,7 +115,7 @@ export const FeaturesSection = () => {
                     Code that does more than compile - our projects turn curiosity into prototypes, and ideas into impact.
                     From neural networks to robotics, we build solutions that matter.
                   </p>
-                  <Button variant="outline" className="group/btn" onClick={() => window.location.href = '/projects'}>
+                  <Button variant="outline" className="group/btn border-primary/30 hover:bg-primary/5 hover:text-primary" onClick={() => window.location.href = '/projects'}>
                     View Projects
                     <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </Button>
@@ -124,14 +124,14 @@ export const FeaturesSection = () => {
             </Card>
 
             {/* Events Card */}
-            <Card className="group hover:shadow-lg transition-all duration-300 border-border/50 hover:border-accent/50">
+            <Card className="group hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 border-border/50 hover:border-primary/30">
               <CardContent className="p-10 md:p-12">
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-accent/10">
-                      <Calendar className="w-7 h-7 text-accent" />
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 group-hover:bg-primary/15 transition-colors">
+                      <Calendar className="w-8 h-8 text-primary" />
                     </div>
-                    <h4 className="text-2xl md:text-3xl font-semibold text-foreground">
+                    <h4 className="text-2xl md:text-3xl font-semibold text-foreground group-hover:text-primary transition-colors">
                       Exciting Events
                     </h4>
                   </div>
@@ -139,7 +139,7 @@ export const FeaturesSection = () => {
                     From caffeine-fueled hackathons to talks that actually stick, our events are designed to challenge,
                     connect and leave a mark on your AI journey.
                   </p>
-                  <Button variant="outline" className="group/btn" onClick={() => window.location.href = '/events'}>
+                  <Button variant="outline" className="group/btn border-primary/30 hover:bg-primary/5 hover:text-primary" onClick={() => window.location.href = '/events'}>
                     View Events
                     <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </Button>
@@ -153,14 +153,14 @@ export const FeaturesSection = () => {
             <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
               Ready to join the AI revolution?
             </h3>
-            <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
               Whether you're a beginner or an expert, there's a place for you in our community.
               Let's build the future of AI together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground px-8"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 shadow-lg shadow-primary/25"
                 onClick={() => window.open('https://chat.whatsapp.com/D98xdCtosjr2d8wchQJSvL', '_blank')}
               >
                 Join ARIES
@@ -169,7 +169,7 @@ export const FeaturesSection = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="px-8"
+                className="px-8 border-primary/30 hover:bg-primary/5 hover:text-primary"
                 onClick={() => window.location.href = '/events'}
               >
                 Upcoming Events

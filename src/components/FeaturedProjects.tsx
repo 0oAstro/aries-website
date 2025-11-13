@@ -41,13 +41,13 @@ const featuredProjects = [
 
 export const FeaturedProjects = () => {
   return (
-    <section className="relative w-full bg-secondary/30 py-24 md:py-32 lg:py-40">
+    <section className="relative w-full bg-primary/5 py-20 md:py-28 lg:py-36">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center space-y-6 mb-16 md:mb-20">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-foreground">
-              Featured <span className="font-semibold">Projects</span>
+              Featured <span className="font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Projects</span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Discover the innovative AI projects built by our talented members at Aries.
@@ -57,7 +57,7 @@ export const FeaturedProjects = () => {
           {/* Projects Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
             {featuredProjects.map((project, idx) => (
-              <Card key={idx} className="group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-accent/50 flex flex-col">
+              <Card key={idx} className="group hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 border-border/50 hover:border-primary/30 flex flex-col">
                 <CardHeader className="space-y-4">
                   <div className="flex items-start justify-between">
                     <Badge variant="secondary" className="text-xs">
@@ -66,14 +66,14 @@ export const FeaturedProjects = () => {
                     <div className="flex gap-2">
                       <a
                         href={project.github}
-                        className="inline-flex items-center justify-center w-8 h-8 rounded-md border border-border hover:border-accent hover:bg-accent/10 transition-colors"
+                        className="inline-flex items-center justify-center w-8 h-8 rounded-md border border-border hover:border-primary hover:bg-primary/10 hover:text-primary transition-colors"
                         aria-label="View on GitHub"
                       >
                         <Github className="w-4 h-4" />
                       </a>
                       <a
                         href={project.link}
-                        className="inline-flex items-center justify-center w-8 h-8 rounded-md border border-border hover:border-accent hover:bg-accent/10 transition-colors"
+                        className="inline-flex items-center justify-center w-8 h-8 rounded-md border border-border hover:border-primary hover:bg-primary/10 hover:text-primary transition-colors"
                         aria-label="View demo"
                       >
                         <ExternalLink className="w-4 h-4" />
@@ -81,7 +81,7 @@ export const FeaturedProjects = () => {
                     </div>
                   </div>
 
-                  <CardTitle className="text-2xl font-semibold text-foreground group-hover:text-accent transition-colors">
+                  <CardTitle className="text-2xl font-semibold text-foreground group-hover:text-primary transition-colors">
                     {project.title}
                   </CardTitle>
                 </CardHeader>
@@ -116,7 +116,7 @@ export const FeaturedProjects = () => {
             <Button
               size="lg"
               variant="outline"
-              className="group/btn"
+              className="group/btn border-primary/30 hover:bg-primary/5 hover:text-primary"
               onClick={() => window.location.href = '/projects'}
             >
               View All Projects
